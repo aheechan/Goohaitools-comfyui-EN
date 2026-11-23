@@ -31,7 +31,7 @@ Goohai (孤海) is a collection of **70+** practical nodes for ComfyUI. It cover
 
 Node titles and menu categories are **English in the code itself**, so they show up in English regardless of the interface language.
 
-Input labels, tooltips and node descriptions are provided through [`locales/en/nodeDefs.json`](locales/en/nodeDefs.json) using ComfyUI's built-in custom-node translation system. Set **Settings → Language → English** in ComfyUI to see them; with another interface language you will still get the original Chinese labels.
+Input labels, tooltips and node descriptions are provided through [`locales/en/nodeDefs.json`](locales/en/nodeDefs.json) using ComfyUI's built-in custom-node translation system. The same file is mirrored in `locales/zh/`, so the node content stays English even when ComfyUI's interface language is Chinese. With the interface set to English (Settings → Language → English) the whole ComfyUI UI is English as well.
 
 Dropdown option values are English too. `i18n_options.py` wraps each node's `INPUT_TYPES()` so the combo lists are shown in English, and maps the chosen English value back to the original internal value right before the node runs. [`locales/en/option_values.json`](locales/en/option_values.json) holds the value table.
 

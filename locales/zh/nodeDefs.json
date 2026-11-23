@@ -1,0 +1,2946 @@
+{
+  "孤海_ID信息": {
+    "display_name": "Goohai ID Info",
+    "inputs": {
+      "姓名": {
+        "name": "Name"
+      },
+      "性别": {
+        "name": "Gender"
+      },
+      "民族": {
+        "name": "Ethnicity"
+      },
+      "出生日期": {
+        "name": "Birth Date"
+      },
+      "住址": {
+        "name": "Address"
+      },
+      "证号": {
+        "name": "ID Number"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Personal Info"
+      },
+      "1": {
+        "name": "Prompt"
+      }
+    }
+  },
+  "孤海_ID证生成器": {
+    "display_name": "Goohai ID Card Generator",
+    "inputs": {
+      "模板图": {
+        "name": "Template Image"
+      },
+      "头像": {
+        "name": "Avatar"
+      },
+      "个人信息": {
+        "name": "Personal Info"
+      },
+      "输出透明背景": {
+        "name": "Output Transparent Background"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Matte"
+      }
+    }
+  },
+  "KontextLoraSwitch": {
+    "display_name": "Goohai Kontext LoRA Switch",
+    "description": "Outputs the LoRA filename and prompt selected from the dropdown menus.",
+    "inputs": {
+      "功能切换": {
+        "name": "Function Toggle"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "lora"
+      },
+      "1": {
+        "name": "prompt"
+      }
+    }
+  },
+  "孤海Kontext比例节点": {
+    "display_name": "Goohai Kontext Aspect Ratio | List",
+    "description": "Provides preset aspect-ratio options and outputs the selected string.",
+    "inputs": {
+      "比例选择": {
+        "name": "Ratio Select"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Ratio"
+      }
+    }
+  },
+  "孤海_kontext生图比例": {
+    "display_name": "Goohai Kontext Aspect Ratio",
+    "inputs": {
+      "宽度": {
+        "name": "Width"
+      },
+      "高度": {
+        "name": "Height"
+      },
+      "选择尺寸": {
+        "name": "Select Size"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Width"
+      },
+      "1": {
+        "name": "Height"
+      }
+    }
+  },
+  "QwenImagePromptOptimizer": {
+    "display_name": "Qwen Image 2.1 Prompt Optimizer",
+    "inputs": {
+      "用户提示词": {
+        "name": "User Prompt"
+      },
+      "文生图模型": {
+        "name": "Text to Image Model"
+      },
+      "图生图模型": {
+        "name": "Image-to-Image Model"
+      },
+      "视觉模型": {
+        "name": "Vision Model"
+      },
+      "输出语言": {
+        "name": "Output Language"
+      },
+      "透明背景": {
+        "name": "Transparent Background"
+      },
+      "种子值": {
+        "name": "Seed Value"
+      },
+      "种子模式": {
+        "name": "Seed Mode"
+      },
+      "卸载模型": {
+        "name": "Unload Model"
+      },
+      "自定义skill": {
+        "name": "Custom Skill",
+        "tooltip": "Connect a custom skill or a short instruction to use as the system prompt; when nothing is connected or the text is empty, the built-in system prompt is used. The output format is handled automatically by the node; output language and transparent background are still controlled by the node."
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "prompt"
+      },
+      "1": {
+        "name": "json"
+      },
+      "2": {
+        "name": "Is Reverse"
+      }
+    }
+  },
+  "孤海Seg次序过滤": {
+    "display_name": "Goohai Seg Order Filter",
+    "inputs": {
+      "优先规则": {
+        "name": "Priority Rule"
+      },
+      "正反顺序": {
+        "name": "Front/Back Order"
+      },
+      "开始索引": {
+        "name": "Start Index"
+      },
+      "过滤数量": {
+        "name": "Filter Count"
+      },
+      "分组阈值": {
+        "name": "Group Threshold",
+        "tooltip": "Percent: after filtering with the discard factor, the average of each mask's largest connected-component bounding box is used. Left-right/top-bottom orders use the average width; top-bottom/left-right orders use the average height. 50 means 50% of the average size; masks whose center coordinates differ by more than this distance are grouped separately."
+      },
+      "Seg": {
+        "name": "Seg"
+      },
+      "masks": {
+        "name": "masks",
+        "tooltip": "Sorts by the largest connected component of each mask and outputs the full masks; when Seg is also connected, Seg takes precedence."
+      },
+      "舍弃因子": {
+        "name": "Discard Factor",
+        "tooltip": "0 disables filtering; with 1 mask it outputs directly. When non-zero, masks whose center lies within 1/20 of any canvas edge are discarded first and excluded from the reference calculation. By input count: for 2-3 masks take the one closest to the image center within the 3x3 center region, or the one with the largest long edge if none; for 4 masks take the 2 closest to the center; for 5 or more take 3. Small masks whose long edge is under 2/3 of the largest candidate long edge are excluded, then the average long edge a is computed. Position is judged by the center of the white region's bounding box. Masks whose long edge differs from a by more than factor x a are discarded. 0.5 keeps [0.5a, 1.5a]; larger values are more permissive. If all masks are discarded by size filtering, non-edge candidates are restored; if all are discarded by edge exclusion, the original input is restored."
+      },
+      "合并遮罩": {
+        "name": "Merge Mask",
+        "tooltip": "When enabled, the filtered masks are merged; when disabled, a mask batch is output. The Seg output always keeps separate segments."
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Seg"
+      },
+      "1": {
+        "name": "Mask"
+      }
+    }
+  },
+  "TextEncodeQwenImage21GH": {
+    "display_name": "Qwen Image 2.1 Text Encode GH",
+    "inputs": {
+      "clip": {
+        "name": "clip"
+      },
+      "prompt": {
+        "name": "prompt"
+      },
+      "negative_prompt": {
+        "name": "negative_prompt"
+      },
+      "latent_width": {
+        "name": "latent_width"
+      },
+      "latent_height": {
+        "name": "latent_height"
+      },
+      "mode": {
+        "name": "mode"
+      },
+      "ref_image_size": {
+        "name": "ref_image_size"
+      },
+      "vae": {
+        "name": "vae"
+      },
+      "mask": {
+        "name": "mask",
+        "tooltip": "Local sampling mask for image 1: white areas are modified, black areas are protected."
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "positive"
+      },
+      "1": {
+        "name": "negative"
+      },
+      "2": {
+        "name": "latent"
+      },
+      "3": {
+        "name": "info"
+      }
+    }
+  },
+  "RestoreQwenImage21GH": {
+    "display_name": "Restore Qwen Image 2.1 GH",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "info": {
+        "name": "info"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "image"
+      }
+    }
+  },
+  "GoohaiAnyExists": {
+    "display_name": "Universal Any Exists (GH)",
+    "description": "Checks whether an Any input exists and supplies a lightweight typed placeholder when it is empty.",
+    "inputs": {
+      "Any": {
+        "name": "Any"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Any"
+      },
+      "1": {
+        "name": "Boolean"
+      }
+    }
+  },
+  "GoohaiRouteBlocker": {
+    "display_name": "Route Blocker",
+    "description": "Passes through, outputs an empty value, or silently blocks an Any connection based on a toggle.",
+    "inputs": {
+      "是否阻断": {
+        "name": "Block"
+      },
+      "阻断模式": {
+        "name": "Block Mode"
+      },
+      "any": {
+        "name": "any"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "any"
+      }
+    }
+  },
+  "GoohaiUniversalSlider": {
+    "display_name": "Goohai Universal Slider",
+    "inputs": {
+      "值": {
+        "name": "Value"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "*"
+      }
+    }
+  },
+  "ExtractDominantColor": {
+    "display_name": "Goohai Dominant Color (Multi-version)",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "降采样系数": {
+        "name": "Downsample Factor"
+      },
+      "颜色容差": {
+        "name": "Color Tolerance"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Dominant Color HEX"
+      }
+    }
+  },
+  "孤海-人脸自动矫正": {
+    "display_name": "👤 Goohai Auto Face Correction",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "开启人脸自动矫正": {
+        "name": "Enable Auto Face Correction"
+      },
+      "边缘裁剪": {
+        "name": "Edge Crop"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Corrected Image"
+      }
+    }
+  },
+  "GoohaiAnySwitch": {
+    "display_name": "Any Switch GH",
+    "outputs": {
+      "0": {
+        "name": "any"
+      }
+    }
+  },
+  "SaveImageJPG_GH": {
+    "display_name": "Save Image JPG Goohai",
+    "description": "Keeps the image quality unchanged while saving a very small JPG file.\n\nCustom filename variables:\n1. %date:yyyymmdd% - date; %time:hhmmss% - time of day\n2. %INDEX% - current image index\n3. %BATCH_SIZE% - batch size\n4. %BATCH_INDEX% - index within the batch\nExamples:\n %date:yyyymmdd%/test_%time:hhmmss% -> creates folder 20260120 under output and saves test_143022.jpg\n %date:YYmmdd%/%date:mmdd%-%time:hhmmss% -> creates folder 260120 under output and saves 0120-143022.jpg\n (absolute paths supported) D:\\desktop\\batch_out\\hd_%time:hhmmss% -> D:\\desktop\\batch_out\\hd_141256.jpg",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "文件名前缀": {
+        "name": "File Name Prefix"
+      }
+    }
+  },
+  "GH_AudioVideoMerger": {
+    "display_name": "Save Video",
+    "description": "Merges an image sequence and audio into an H.264 MP4 video (speed-optimized).",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "音频": {
+        "name": "Audio"
+      },
+      "帧率": {
+        "name": "Frame Rate"
+      },
+      "编码质量": {
+        "name": "Encoding Quality"
+      },
+      "保存视频": {
+        "name": "Save Video"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Video"
+      }
+    }
+  },
+  "RemoveBackgroundWithMask": {
+    "display_name": "Goohai Remove Background Outside Mask",
+    "description": "Keeps the area inside the mask and removes the background outside it.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "遮罩": {
+        "name": "Mask"
+      },
+      "遮罩填充漏洞": {
+        "name": "Mask Fill Holes"
+      },
+      "遮罩裁剪": {
+        "name": "Mask Crop"
+      },
+      "裁剪系数": {
+        "name": "Crop Factor"
+      },
+      "图像描边": {
+        "name": "Image Outline"
+      },
+      "描边颜色": {
+        "name": "Outline Color"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "RGBA Image"
+      },
+      "1": {
+        "name": "RGB Image"
+      },
+      "2": {
+        "name": "Mask"
+      }
+    }
+  },
+  "LoadImageGoohai": {
+    "display_name": "Load Image Goohai",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "保留透明通道": {
+        "name": "Keep Alpha Channel"
+      },
+      "crop": {
+        "name": "crop"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      },
+      "2": {
+        "name": "File Name"
+      }
+    }
+  },
+  "GuHai_ImageLoaderPro": {
+    "display_name": "Goohai Load Batch Images",
+    "description": "Smart image batch loader with EXIF orientation correction, format filtering, and total image count.",
+    "inputs": {
+      "文件夹路径": {
+        "name": "Folder Path"
+      },
+      "起始索引": {
+        "name": "Start Index"
+      },
+      "加载模式": {
+        "name": "Load Mode"
+      },
+      "保留透明通道": {
+        "name": "Keep Alpha Channel"
+      },
+      "包含子文件夹": {
+        "name": "Include Subfolder"
+      },
+      "显示扩展名": {
+        "name": "Show Extension"
+      },
+      "自定义扩展名": {
+        "name": "Custom Extension"
+      },
+      "重置递增": {
+        "name": "Reset Increment"
+      },
+      "seed": {
+        "name": "seed"
+      },
+      "图像筛选": {
+        "name": "Image Filter"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "File Name"
+      },
+      "2": {
+        "name": "Image Path"
+      },
+      "3": {
+        "name": "Extension"
+      },
+      "4": {
+        "name": "Path + File Name"
+      },
+      "5": {
+        "name": "Index"
+      },
+      "6": {
+        "name": "Total Images"
+      }
+    }
+  },
+  "SingleImageLayoutNode": {
+    "display_name": "Goohai Single-size Layout",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "相纸宽": {
+        "name": "Paper Width"
+      },
+      "相纸高": {
+        "name": "Paper Height"
+      },
+      "分辨率": {
+        "name": "Resolution"
+      },
+      "文件名": {
+        "name": "File Name"
+      },
+      "照片间距": {
+        "name": "Photo Spacing"
+      },
+      "字体": {
+        "name": "Font"
+      },
+      "字体大小": {
+        "name": "Font Size"
+      },
+      "描边": {
+        "name": "Outline"
+      },
+      "安全边距": {
+        "name": "Safe Margin"
+      },
+      "自动切换横竖版": {
+        "name": "Auto Orientation"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Layout Image"
+      }
+    }
+  },
+  "孤海-图像与遮罩描边": {
+    "display_name": "Goohai Image & Mask Outline",
+    "inputs": {
+      "单位": {
+        "name": "Unit"
+      },
+      "模式": {
+        "name": "Mode"
+      },
+      "描边宽度": {
+        "name": "Outline Width"
+      },
+      "描边颜色": {
+        "name": "Outline Color"
+      },
+      "模糊": {
+        "name": "Blur"
+      },
+      "平滑": {
+        "name": "Smooth"
+      },
+      "输出通道": {
+        "name": "Output Channels"
+      },
+      "image": {
+        "name": "image"
+      },
+      "mask": {
+        "name": "mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      }
+    }
+  },
+  "ImageMaskPreview_Guhai": {
+    "display_name": "Image & Mask Preview Goohai",
+    "description": "Takes an image and a batch of masks, then overlays each mask region with a color and its index; overlay color and opacity are configurable.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "遮罩": {
+        "name": "Mask"
+      },
+      "遮罩不透明": {
+        "name": "Mask Opacity"
+      },
+      "遮罩颜色": {
+        "name": "Mask Color"
+      },
+      "显示序号": {
+        "name": "Show Index"
+      },
+      "序号不透明": {
+        "name": "Index Opacity"
+      },
+      "序号缩放": {
+        "name": "Index Scale"
+      },
+      "字号比例": {
+        "name": "Font Size Ratio"
+      },
+      "序号字体": {
+        "name": "Index Font"
+      },
+      "序号颜色": {
+        "name": "Index Color"
+      }
+    }
+  },
+  "孤海图像亮度比较": {
+    "display_name": "Goohai Image Brightness Compare",
+    "inputs": {
+      "图像1": {
+        "name": "Image 1"
+      },
+      "阈值": {
+        "name": "Threshold"
+      },
+      "遮罩1": {
+        "name": "Mask 1"
+      },
+      "图像2": {
+        "name": "Image 2"
+      },
+      "遮罩2": {
+        "name": "Mask 2"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Comparison Result"
+      }
+    }
+  },
+  "ImageSaveNode_孤海": {
+    "display_name": "Goohai Image Save",
+    "inputs": {
+      "图像输入": {
+        "name": "Image Input"
+      },
+      "输出路径": {
+        "name": "Output Path"
+      },
+      "文件名前缀": {
+        "name": "File Name Prefix"
+      },
+      "文件名分隔符": {
+        "name": "File Name Separator"
+      },
+      "文件名自动序号": {
+        "name": "File Name Auto Index"
+      },
+      "文件名序号位数": {
+        "name": "File Name Index Digits"
+      },
+      "dpi": {
+        "name": "dpi"
+      },
+      "质量": {
+        "name": "Quality"
+      },
+      "使用原始文件名": {
+        "name": "Use Original File Name"
+      },
+      "图片格式": {
+        "name": "Image Format"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image Output"
+      }
+    }
+  },
+  "GulfSeaImageMergeMask": {
+    "display_name": "Goohai Image Merge (Mask)",
+    "description": "Composites the overlay image onto the background image using the mask.",
+    "inputs": {
+      "背景图": {
+        "name": "Background Image"
+      },
+      "覆盖图": {
+        "name": "Overlay Image"
+      },
+      "透明度": {
+        "name": "Opacity"
+      },
+      "遮罩扩展": {
+        "name": "Mask Expand"
+      },
+      "模糊半径": {
+        "name": "Blur Radius"
+      },
+      "匹配图像大小": {
+        "name": "Match Image Size"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      }
+    }
+  },
+  "GH_ImageVideoComparer": {
+    "display_name": "Image/Video Comparer GH",
+    "description": "Compares images or videos inside the node with a slider, side-by-side, or top/bottom split view.",
+    "inputs": {
+      "media_a": {
+        "name": "media_a",
+        "tooltip": "Image or video A (optional)"
+      },
+      "media_b": {
+        "name": "media_b",
+        "tooltip": "Image or video B (optional)"
+      }
+    }
+  },
+  "孤海-图像嵌入": {
+    "display_name": "Goohai Image Embed",
+    "description": "Embeds the overlay image into the background according to the mask region.",
+    "inputs": {
+      "背景图": {
+        "name": "Background Image"
+      },
+      "嵌入图": {
+        "name": "Embed Image"
+      },
+      "嵌入遮罩": {
+        "name": "Embed Mask"
+      },
+      "嵌入方式": {
+        "name": "Embed Method"
+      },
+      "嵌入到": {
+        "name": "Embed Into"
+      },
+      "输出通道": {
+        "name": "Output Channels"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      }
+    }
+  },
+  "孤海-图像差异到遮罩": {
+    "display_name": "Goohai Image Difference to Mask",
+    "inputs": {
+      "图像1": {
+        "name": "Image 1"
+      },
+      "图像2": {
+        "name": "Image 2"
+      },
+      "阈值": {
+        "name": "Threshold"
+      },
+      "最小区域": {
+        "name": "Min Region"
+      },
+      "填充漏洞": {
+        "name": "Fill Gaps"
+      },
+      "遮罩扩展": {
+        "name": "Mask Expand"
+      },
+      "遮罩羽化": {
+        "name": "Mask Feather"
+      }
+    }
+  },
+  "RotateImageNode": {
+    "display_name": "Goohai Image Rotate",
+    "description": "Rotates an image by common angles.",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "旋转角度": {
+        "name": "Rotation Angle"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Rotated Image"
+      }
+    }
+  },
+  "孤海-图像添加水印": {
+    "display_name": "Goohai Image Watermark",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "水印文本": {
+        "name": "Watermark Text"
+      },
+      "字体": {
+        "name": "Font"
+      },
+      "水印大小百分比": {
+        "name": "Watermark Size Percent"
+      },
+      "水印不透明度": {
+        "name": "Watermark Opacity"
+      },
+      "水平位置": {
+        "name": "Horizontal Position"
+      },
+      "垂直位置": {
+        "name": "Vertical Position"
+      },
+      "X偏移百分比": {
+        "name": "X Offset Percent"
+      },
+      "Y偏移百分比": {
+        "name": "Y Offset Percent"
+      },
+      "文字颜色": {
+        "name": "Text Color"
+      },
+      "水印平铺": {
+        "name": "Watermark Tile"
+      },
+      "水印角度": {
+        "name": "Watermark Angle"
+      },
+      "水印间距": {
+        "name": "Watermark Spacing"
+      },
+      "输出透明通道": {
+        "name": "Output Alpha Channel"
+      },
+      "水印图像": {
+        "name": "Watermark Image"
+      }
+    }
+  },
+  "孤海图像组合批次": {
+    "display_name": "Goohai Image Batch Combine",
+    "inputs": {
+      "统一尺寸模式": {
+        "name": "Uniform Size Mode"
+      },
+      "图像1": {
+        "name": "Image 1"
+      },
+      "图像2": {
+        "name": "Image 2"
+      },
+      "图像3": {
+        "name": "Image 3"
+      },
+      "图像4": {
+        "name": "Image 4"
+      },
+      "图像5": {
+        "name": "Image 5"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Batch Images"
+      },
+      "1": {
+        "name": "Boolean"
+      },
+      "2": {
+        "name": "Total Batches"
+      }
+    }
+  },
+  "图像缩放V2_孤海": {
+    "display_name": "Image Scale V2 Goohai",
+    "inputs": {
+      "宽度": {
+        "name": "Width"
+      },
+      "高度": {
+        "name": "Height"
+      },
+      "缩放方法": {
+        "name": "Scale Method"
+      },
+      "将边缩放到": {
+        "name": "Scale Edge To"
+      },
+      "缩放插值": {
+        "name": "Scale Interpolation"
+      },
+      "缩放模式": {
+        "name": "Scale Mode"
+      },
+      "固定方向": {
+        "name": "Fixed Direction"
+      },
+      "执行条件": {
+        "name": "Execution Condition"
+      },
+      "填充颜色": {
+        "name": "Fill Color"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      },
+      "图像": {
+        "name": "Image"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Width"
+      },
+      "2": {
+        "name": "Height"
+      },
+      "3": {
+        "name": "Mask"
+      }
+    }
+  },
+  "长边短边": {
+    "display_name": "Long/Short Edge",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "宽度": {
+        "name": "Width"
+      },
+      "高度": {
+        "name": "Height"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Long Edge"
+      },
+      "1": {
+        "name": "Short Edge"
+      },
+      "2": {
+        "name": "Value Ratio"
+      }
+    }
+  },
+  "孤海图像缩放按像素": {
+    "display_name": "Goohai Image Scale by Pixels",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "缩放方法": {
+        "name": "Scale Method"
+      },
+      "宽度": {
+        "name": "Width"
+      },
+      "高度": {
+        "name": "Height"
+      },
+      "将边缩放到": {
+        "name": "Scale Edge To"
+      },
+      "缩放插值": {
+        "name": "Scale Interpolation"
+      },
+      "缩放模式": {
+        "name": "Scale Mode"
+      },
+      "执行条件": {
+        "name": "Execution Condition"
+      },
+      "启用填充色": {
+        "name": "Enable Fill Color"
+      },
+      "填充颜色": {
+        "name": "Fill Color"
+      },
+      "自适应旋转": {
+        "name": "Adaptive Rotate"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Width"
+      },
+      "2": {
+        "name": "Height"
+      },
+      "3": {
+        "name": "Mask"
+      },
+      "4": {
+        "name": "Extend Mask"
+      },
+      "5": {
+        "name": "Boolean"
+      }
+    }
+  },
+  "图像缩放范围孤海": {
+    "display_name": "Image Scale (Range) Goohai",
+    "description": "Constrains image and mask size to a target range with several high-quality scaling modes.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "遮罩": {
+        "name": "Mask"
+      },
+      "限制模式": {
+        "name": "Limit Mode"
+      },
+      "最小尺寸": {
+        "name": "Min Size"
+      },
+      "最大尺寸": {
+        "name": "Max Size"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      }
+    }
+  },
+  "孤海图像裁剪按比例": {
+    "display_name": "Goohai Image Crop by Ratio",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "缩放方法": {
+        "name": "Scale Method"
+      },
+      "比例宽": {
+        "name": "Ratio Width"
+      },
+      "比例高": {
+        "name": "Ratio Height"
+      },
+      "缩放插值": {
+        "name": "Scale Interpolation"
+      },
+      "缩放模式": {
+        "name": "Scale Mode"
+      },
+      "启用填充色": {
+        "name": "Enable Fill Color"
+      },
+      "填充颜色": {
+        "name": "Fill Color"
+      },
+      "自适应旋转": {
+        "name": "Adaptive Rotate"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Width"
+      },
+      "2": {
+        "name": "Height"
+      },
+      "3": {
+        "name": "Mask"
+      },
+      "4": {
+        "name": "Extend Mask"
+      },
+      "5": {
+        "name": "Boolean"
+      }
+    }
+  },
+  "GohaiImageCropWithMaskProtection": {
+    "display_name": "Goohai Image Crop (Subject Protection)",
+    "description": "Crops the image while keeping the area covered by the protection mask fully intact.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "宽度": {
+        "name": "Width"
+      },
+      "高度": {
+        "name": "Height"
+      },
+      "保护遮罩": {
+        "name": "Protect Mask"
+      },
+      "保护扩展系数": {
+        "name": "Protect Expand Factor"
+      },
+      "填充模式": {
+        "name": "Fill Mode"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Extend Mask"
+      },
+      "2": {
+        "name": "Is Extended"
+      }
+    }
+  },
+  "孤海外补画板按目标宽高": {
+    "display_name": "Goohai Outpaint Canvas (Target Size)",
+    "description": "Outpaints to a target width and height and outputs a combined mask of the original and extended areas.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "目标宽度": {
+        "name": "Target Width"
+      },
+      "目标高度": {
+        "name": "Target Height"
+      },
+      "左扩比例": {
+        "name": "Left Expand Ratio"
+      },
+      "上扩比例": {
+        "name": "Top Expand Ratio"
+      },
+      "羽化": {
+        "name": "Feather"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      },
+      "外补颜色": {
+        "name": "Outpaint Color"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      },
+      "2": {
+        "name": "Outpaint Exists"
+      }
+    }
+  },
+  "孤海外补画板按比例": {
+    "display_name": "Goohai Outpaint Canvas (Ratio)",
+    "description": "Outpaints according to a width/height ratio.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "比例宽": {
+        "name": "Ratio Width"
+      },
+      "比例高": {
+        "name": "Ratio Height"
+      },
+      "左扩比例": {
+        "name": "Left Expand Ratio"
+      },
+      "上扩比例": {
+        "name": "Top Expand Ratio"
+      },
+      "羽化": {
+        "name": "Feather"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      },
+      "外补颜色": {
+        "name": "Outpaint Color"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      },
+      "2": {
+        "name": "Outpaint Exists"
+      }
+    }
+  },
+  "孤海外补画板按方向": {
+    "display_name": "Goohai Outpaint Canvas (Direction)",
+    "description": "Outpaints by the extension amount on each of the four sides.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "单位": {
+        "name": "Unit"
+      },
+      "左": {
+        "name": "Left"
+      },
+      "右": {
+        "name": "Right"
+      },
+      "上": {
+        "name": "Top"
+      },
+      "下": {
+        "name": "Bottom"
+      },
+      "羽化": {
+        "name": "Feather"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      },
+      "外补颜色": {
+        "name": "Outpaint Color"
+      },
+      "遮罩": {
+        "name": "Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      },
+      "2": {
+        "name": "Outpaint Exists"
+      }
+    }
+  },
+  "孤海外补画板可视化": {
+    "display_name": "Outpaint Canvas (Visual)",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "单位": {
+        "name": "Unit"
+      },
+      "左": {
+        "name": "Left"
+      },
+      "右": {
+        "name": "Right"
+      },
+      "上": {
+        "name": "Top"
+      },
+      "下": {
+        "name": "Bottom"
+      },
+      "最大输出长边": {
+        "name": "Max Output Long Edge"
+      },
+      "整除数": {
+        "name": "Divisible By"
+      },
+      "外补颜色": {
+        "name": "Outpaint Color"
+      },
+      "遮罩": {
+        "name": "Mask"
+      },
+      "gh_visual_ratio": {
+        "name": "gh_visual_ratio"
+      },
+      "gh_visual_layout": {
+        "name": "gh_visual_layout"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Mask"
+      },
+      "2": {
+        "name": "Outpaint Exists"
+      }
+    }
+  },
+  "MultiSizeLayoutNode_ZH": {
+    "display_name": "Goohai Multi-size Mixed Layout",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "单位": {
+        "name": "Unit"
+      },
+      "画布宽度": {
+        "name": "Canvas Width"
+      },
+      "画布高度": {
+        "name": "Canvas Height"
+      },
+      "分辨率": {
+        "name": "Resolution"
+      },
+      "——": {
+        "name": "——"
+      },
+      "宽度1": {
+        "name": "Width 1"
+      },
+      "高度1": {
+        "name": "Height 1"
+      },
+      "水平张数1": {
+        "name": "Horizontal Count 1"
+      },
+      "垂直张数1": {
+        "name": "Vertical Count 1"
+      },
+      "旋转1": {
+        "name": "Rotate 1"
+      },
+      "————": {
+        "name": "————"
+      },
+      "宽度2": {
+        "name": "Width 2"
+      },
+      "高度2": {
+        "name": "Height 2"
+      },
+      "照片2排数": {
+        "name": "Photo 2 Rows"
+      },
+      "排列方向2": {
+        "name": "Arrange Direction 2"
+      },
+      "旋转2": {
+        "name": "Rotate 2"
+      },
+      "———": {
+        "name": "———"
+      },
+      "宽度3": {
+        "name": "Width 3"
+      },
+      "高度3": {
+        "name": "Height 3"
+      },
+      "照片3排数": {
+        "name": "Photo 3 Rows"
+      },
+      "排列方向3": {
+        "name": "Arrange Direction 3"
+      },
+      "旋转3": {
+        "name": "Rotate 3"
+      },
+      "—————": {
+        "name": "—————"
+      },
+      "照片间距": {
+        "name": "Photo Spacing"
+      },
+      "描边宽度": {
+        "name": "Outline Width"
+      },
+      "描边颜色": {
+        "name": "Outline Color"
+      },
+      "文件名": {
+        "name": "File Name"
+      },
+      "字体": {
+        "name": "Font"
+      },
+      "文字大小": {
+        "name": "Text Size"
+      },
+      "文字颜色": {
+        "name": "Text Color"
+      }
+    }
+  },
+  "MaskTopExpansion": {
+    "display_name": "Goohai Head-top Mask",
+    "inputs": {
+      "mask": {
+        "name": "mask"
+      },
+      "X": {
+        "name": "X"
+      },
+      "Y": {
+        "name": "Y"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "new_mask"
+      }
+    }
+  },
+  "字符串按类型分隔_孤海": {
+    "display_name": "Split String by Type Goohai",
+    "description": "Splits a string at the boundaries between different character types.",
+    "inputs": {
+      "字符串": {
+        "name": "String"
+      },
+      "分隔符": {
+        "name": "Separator"
+      },
+      "分隔类型": {
+        "name": "Separator Type"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "String"
+      }
+    }
+  },
+  "GuHaiPNGAutoMask": {
+    "display_name": "Goohai Custom PNG Auto Template",
+    "inputs": {
+      "template_image": {
+        "name": "template_image"
+      },
+      "portrait_image": {
+        "name": "portrait_image"
+      }
+    }
+  },
+  "儿童贴拼版-圆": {
+    "display_name": "Goohai Custom Kids Sticker Layout - Round",
+    "description": "Arranges kids sticker templates into a printable sheet.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "尺寸": {
+        "name": "Size"
+      },
+      "保留透明通道": {
+        "name": "Keep Alpha Channel"
+      },
+      "文件名": {
+        "name": "File Name"
+      },
+      "保存路径": {
+        "name": "Save Path"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      }
+    }
+  },
+  "ChildPhotoLayoutNode": {
+    "display_name": "Goohai Custom Kids Sticker Layout - Square",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "layout": {
+        "name": "layout"
+      },
+      "preserve_alpha": {
+        "name": "preserve_alpha"
+      },
+      "filename": {
+        "name": "filename"
+      },
+      "save_path": {
+        "name": "save_path"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "image"
+      }
+    }
+  },
+  "孤海定制-儿童贴拼版-长": {
+    "display_name": "Goohai Custom Kids Sticker Layout - Long",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "版式": {
+        "name": "Layout"
+      },
+      "保留透明通道": {
+        "name": "Keep Alpha Channel"
+      },
+      "文件名": {
+        "name": "File Name"
+      },
+      "保存路径": {
+        "name": "Save Path"
+      }
+    }
+  },
+  "GuhaiCustomChildrenStickerRound": {
+    "display_name": "Goohai Custom Kids Sticker Template - Round",
+    "description": "Outputs the image path and size selected by the two dropdown menus.",
+    "inputs": {
+      "模板样式": {
+        "name": "Template Style"
+      },
+      "拼版尺寸": {
+        "name": "Layout Size"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image Path"
+      },
+      "1": {
+        "name": "Size"
+      }
+    }
+  },
+  "GuhaiCustomChildrenStickerQuadrate": {
+    "display_name": "Goohai Custom Kids Sticker Template - Square",
+    "description": "Outputs the image path and size selected by the two dropdown menus.",
+    "inputs": {
+      "模板样式": {
+        "name": "Template Style"
+      },
+      "拼版尺寸": {
+        "name": "Layout Size"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image Path"
+      },
+      "1": {
+        "name": "Size"
+      }
+    }
+  },
+  "GuhaiCustomChildrenStickerLong": {
+    "display_name": "Goohai Custom Kids Sticker Template - Long",
+    "description": "Outputs the image path and size selected by the two dropdown menus.",
+    "inputs": {
+      "模板样式": {
+        "name": "Template Style"
+      },
+      "拼版尺寸": {
+        "name": "Layout Size"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image Path"
+      },
+      "1": {
+        "name": "Size"
+      }
+    }
+  },
+  "GH_18x6_Layout": {
+    "display_name": "Goohai Custom Layout 18x6",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "画布宽mm": {
+        "name": "Canvas Width mm"
+      },
+      "画布高mm": {
+        "name": "Canvas Height mm"
+      },
+      "DPI": {
+        "name": "DPI"
+      },
+      "边框x": {
+        "name": "Border X"
+      },
+      "边框y": {
+        "name": "Border Y"
+      },
+      "logo": {
+        "name": "logo"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "image"
+      }
+    }
+  },
+  "GoohaiDisplayAny": {
+    "display_name": "Display Any GH",
+    "description": "Displays any input and passes it through unchanged. Runs on demand when a downstream node is connected, and displays actively when there is none.",
+    "inputs": {
+      "gh_input_type": {
+        "name": "gh_input_type"
+      },
+      "Any": {
+        "name": "Any"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Any"
+      }
+    }
+  },
+  "布尔孤海": {
+    "display_name": "Boolean Goohai",
+    "description": "Boolean node with a custom toggle UI.",
+    "inputs": {
+      "开关": {
+        "name": "Toggle"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Boolean"
+      }
+    }
+  },
+  "常用颜色🔵孤海": {
+    "display_name": "Common Colors 🔵Goohai",
+    "description": "Pick a preset color or choose a custom color with the color picker, then output a hex color string (e.g. #FFFFFF).",
+    "inputs": {
+      "选择颜色": {
+        "name": "Select Color"
+      },
+      "自定义颜色": {
+        "name": "Custom Color"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "T"
+      }
+    }
+  },
+  "忽略多组孤海": {
+    "display_name": "Ignore Extra Groups Goohai",
+    "description": "Toggles the ignore/bypass state of workflow groups with a switch."
+  },
+  "GuHaiParameterSummary": {
+    "display_name": "Goohai Batch Switch",
+    "inputs": {
+      "批量处理": {
+        "name": "Batch Processing"
+      },
+      "包含子文件夹": {
+        "name": "Include Subfolder"
+      },
+      "头顶比例": {
+        "name": "Head Top Ratio"
+      },
+      "人脸占比": {
+        "name": "Face Ratio"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Boolean 1"
+      },
+      "1": {
+        "name": "Boolean 2"
+      },
+      "2": {
+        "name": "Float 1"
+      },
+      "3": {
+        "name": "Float 2"
+      }
+    }
+  },
+  "GuhaiBatchProgress_孤海批处理进度条": {
+    "display_name": "Goohai Batch Progress 🐋",
+    "description": "Takes a total count and the current index and renders a progress bar image.",
+    "inputs": {
+      "total": {
+        "name": "total"
+      },
+      "current": {
+        "name": "current"
+      },
+      "background_color": {
+        "name": "background_color"
+      },
+      "progress_color": {
+        "name": "progress_color"
+      },
+      "text_color": {
+        "name": "text_color"
+      },
+      "font_size": {
+        "name": "font_size"
+      },
+      "font_name": {
+        "name": "font_name"
+      }
+    }
+  },
+  "GH_BatchLayout": {
+    "display_name": "Goohai Batch Auto Layout",
+    "inputs": {
+      "输入文件夹路径": {
+        "name": "Input Folder Path"
+      },
+      "输出文件夹路径": {
+        "name": "Output Folder Path"
+      },
+      "图片格式筛选": {
+        "name": "Image Format Filter"
+      },
+      "输出文件名": {
+        "name": "Output File Name"
+      },
+      "保存格式": {
+        "name": "Save Format"
+      },
+      "开启批处理": {
+        "name": "Enable Batch Processing"
+      },
+      "包含子文件夹": {
+        "name": "Include Subfolder"
+      },
+      "单位": {
+        "name": "Unit"
+      },
+      "画布宽度": {
+        "name": "Canvas Width"
+      },
+      "画布高度": {
+        "name": "Canvas Height"
+      },
+      "分辨率": {
+        "name": "Resolution"
+      },
+      "照片宽度": {
+        "name": "Photo Width"
+      },
+      "照片高度": {
+        "name": "Photo Height"
+      },
+      "水平间距": {
+        "name": "Horizontal Spacing"
+      },
+      "垂直间距": {
+        "name": "Vertical Spacing"
+      },
+      "裁剪模式": {
+        "name": "Crop Mode"
+      },
+      "自适应旋转": {
+        "name": "Adaptive Rotate"
+      },
+      "背景颜色": {
+        "name": "Background Color"
+      },
+      "圆角半径": {
+        "name": "Corner Radius"
+      },
+      "描边像素": {
+        "name": "Outline Pixels"
+      },
+      "描边颜色": {
+        "name": "Outline Color"
+      },
+      "显示文件名": {
+        "name": "Show File Name"
+      },
+      "字体选择": {
+        "name": "Font Selection"
+      },
+      "优先显示": {
+        "name": "Priority Display"
+      },
+      "字体颜色": {
+        "name": "Font Color"
+      },
+      "字体大小": {
+        "name": "Font Size"
+      },
+      "安全边距": {
+        "name": "Safe Margin"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      },
+      "1": {
+        "name": "Report"
+      }
+    }
+  },
+  "孤海-提取代号定制": {
+    "display_name": "Goohai Extract Code Custom",
+    "inputs": {
+      "文本": {
+        "name": "Text"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Code"
+      }
+    }
+  },
+  "GH_EffectSwitcher": {
+    "display_name": "Goohai Effect Switcher",
+    "description": "Effect switcher with 14-15 random-seed variants (cache optimized); includes \"lock this effect\" to reuse the previous output value.",
+    "inputs": {
+      "效果选择": {
+        "name": "Effect Selection"
+      },
+      "固定此效果": {
+        "name": "Lock This Effect"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Integer"
+      }
+    }
+  },
+  "数学运算_孤海": {
+    "display_name": "Math Operations Goohai",
+    "inputs": {
+      "值1": {
+        "name": "Value 1"
+      },
+      "值2": {
+        "name": "Value 2"
+      },
+      "a": {
+        "name": "a"
+      },
+      "b": {
+        "name": "b"
+      },
+      "c": {
+        "name": "c"
+      },
+      "d": {
+        "name": "d"
+      },
+      "f": {
+        "name": "f"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Integer 1"
+      },
+      "1": {
+        "name": "Float 1"
+      },
+      "2": {
+        "name": "Integer 2"
+      },
+      "3": {
+        "name": "Float 2"
+      },
+      "4": {
+        "name": "? Help"
+      }
+    }
+  },
+  "LoneSeaImageCounter": {
+    "display_name": "📁Goohai Folder Image Count",
+    "inputs": {
+      "folder_path": {
+        "name": "folder_path"
+      },
+      "include_subdirs": {
+        "name": "include_subdirs"
+      },
+      "seed": {
+        "name": "seed"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image Count"
+      }
+    }
+  },
+  "孤海-文件夹数量统计": {
+    "display_name": "Goohai Subfolder Count",
+    "inputs": {
+      "文件夹路径": {
+        "name": "Folder Path"
+      },
+      "seed": {
+        "name": "seed"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Folder Count"
+      }
+    }
+  },
+  "孤海-文件夹索引": {
+    "display_name": "Goohai Folder Index",
+    "inputs": {
+      "文件夹路径": {
+        "name": "Folder Path"
+      },
+      "起始索引": {
+        "name": "Start Index"
+      },
+      "处理总数": {
+        "name": "Total Processed"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Subdirectories"
+      },
+      "1": {
+        "name": "Total Directories"
+      },
+      "2": {
+        "name": "Path"
+      }
+    }
+  },
+  "孤海根据文件名识别尺寸": {
+    "display_name": "Goohai Size from Filename",
+    "inputs": {
+      "文件名": {
+        "name": "File Name"
+      },
+      "尺寸定义": {
+        "name": "Size Definition"
+      },
+      "单位": {
+        "name": "Unit"
+      },
+      "分辨率": {
+        "name": "Resolution"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Width"
+      },
+      "1": {
+        "name": "Height"
+      },
+      "2": {
+        "name": "Size Name"
+      },
+      "3": {
+        "name": "Canvas Width"
+      },
+      "4": {
+        "name": "Canvas Height"
+      }
+    }
+  },
+  "GoohaiRatioAndResolution": {
+    "display_name": "Aspect Ratio & Resolution",
+    "description": "Computes output image dimensions from a target ratio and mode.",
+    "inputs": {
+      "比例": {
+        "name": "Ratio"
+      },
+      "模式": {
+        "name": "Mode"
+      },
+      "固定边像素": {
+        "name": "Fixed Edge Pixels"
+      },
+      "百万像素": {
+        "name": "Megapixels"
+      },
+      "长边最小": {
+        "name": "Min Long Edge"
+      },
+      "长边最大": {
+        "name": "Max Long Edge"
+      },
+      "自定宽度": {
+        "name": "Custom Width"
+      },
+      "自定高度": {
+        "name": "Custom Height"
+      },
+      "倍数取整": {
+        "name": "Round To Multiple"
+      },
+      "图像": {
+        "name": "Image"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Ratio"
+      },
+      "1": {
+        "name": "Width"
+      },
+      "2": {
+        "name": "Height"
+      }
+    }
+  },
+  "孤海-浮点滑条": {
+    "display_name": "Goohai Float Slider",
+    "inputs": {
+      "数值": {
+        "name": "Value"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Float"
+      }
+    }
+  },
+  "孤海-浮点滑条 0-2": {
+    "display_name": "Goohai Float Slider 0-2",
+    "inputs": {
+      "数值": {
+        "name": "Value"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Float"
+      }
+    }
+  },
+  "RemoveSolidBackground_孤海V2": {
+    "display_name": "Goohai Remove Solid Background v2",
+    "description": "Smart dominant-color detection and background removal (v2.1).",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "颜色阈值": {
+        "name": "Color Threshold"
+      },
+      "边缘采样密度": {
+        "name": "Edge Sampling Density"
+      },
+      "移除扩展": {
+        "name": "Remove Extension"
+      },
+      "模糊半径": {
+        "name": "Blur Radius"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Transparent Image"
+      },
+      "1": {
+        "name": "Mask"
+      }
+    }
+  },
+  "结婚登记照服装_孤海": {
+    "display_name": "Marriage Registration Outfit Goohai",
+    "description": "Outfit selector for marriage registration photos.",
+    "inputs": {
+      "服装序号": {
+        "name": "Clothing Index"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "image"
+      }
+    }
+  },
+  "孤海-肤色差值": {
+    "display_name": "Goohai Skin Tone Difference",
+    "description": "Compares color differences between two images and outputs a saturation boolean.",
+    "inputs": {
+      "图像1": {
+        "name": "Image 1"
+      },
+      "图像2": {
+        "name": "Image 2"
+      },
+      "颜色阈值": {
+        "name": "Color Threshold"
+      },
+      "遮罩1": {
+        "name": "Mask 1"
+      },
+      "遮罩2": {
+        "name": "Mask 2"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Color Difference"
+      },
+      "1": {
+        "name": "S Boolean"
+      }
+    }
+  },
+  "GuHaiAutoImageSplit": {
+    "display_name": "Goohai Auto Split Image",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "保存目录": {
+        "name": "Save Folder"
+      },
+      "水平张数": {
+        "name": "Horizontal Count"
+      },
+      "垂直张数": {
+        "name": "Vertical Count"
+      },
+      "移除画布边缘": {
+        "name": "Remove Canvas Edge"
+      },
+      "移除描边": {
+        "name": "Remove Outline"
+      },
+      "文件名前缀": {
+        "name": "File Name Prefix"
+      },
+      "保存格式": {
+        "name": "Save Format"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Split Images"
+      }
+    }
+  },
+  "SlashConverter": {
+    "display_name": "Goohai Auto Slash Converter",
+    "inputs": {
+      "folder_path": {
+        "name": "folder_path"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Path"
+      }
+    }
+  },
+  "GuHaiCreateAutoFolder": {
+    "display_name": "Goohai Auto Create Folder",
+    "inputs": {
+      "图片路径": {
+        "name": "Image Path"
+      },
+      "输入路径": {
+        "name": "Input Path"
+      },
+      "输出路径": {
+        "name": "Output Path"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "output_path"
+      }
+    }
+  },
+  "孤海-证件照排版（A5定制）": {
+    "display_name": "Goohai ID Photo Layout (A5 Custom)",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "尺寸选择": {
+        "name": "Size Selection"
+      },
+      "DPI": {
+        "name": "DPI"
+      },
+      "描边宽度": {
+        "name": "Outline Width"
+      },
+      "描边颜色": {
+        "name": "Outline Color"
+      },
+      "文件名": {
+        "name": "File Name"
+      },
+      "字体": {
+        "name": "Font"
+      },
+      "文字大小": {
+        "name": "Text Size"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Layout Image"
+      },
+      "1": {
+        "name": "Size Name"
+      }
+    }
+  },
+  "IDPhotoClothingSelector_孤海": {
+    "display_name": "ID Photo Outfit & Hairstyle Goohai",
+    "description": "Outfit and hairstyle selector for ID photos.",
+    "inputs": {
+      "风格类型": {
+        "name": "Style Type"
+      },
+      "提示词输出": {
+        "name": "Prompt Output"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Prompt"
+      }
+    }
+  },
+  "SimpleIDPhotoPrompts": {
+    "display_name": "Goohai ID Photo Simple Prompt",
+    "inputs": {
+      "构图": {
+        "name": "Composition"
+      },
+      "国籍": {
+        "name": "Nationality"
+      },
+      "性别": {
+        "name": "Gender"
+      },
+      "体型": {
+        "name": "Body Type"
+      },
+      "发色": {
+        "name": "Hair Color"
+      },
+      "发型": {
+        "name": "Hairstyle"
+      },
+      "服装颜色": {
+        "name": "Clothing Color"
+      },
+      "服装款式": {
+        "name": "Clothing Style"
+      },
+      "服饰佩饰": {
+        "name": "Accessories"
+      },
+      "妆容": {
+        "name": "Makeup"
+      },
+      "表情": {
+        "name": "Expression"
+      },
+      "背景色": {
+        "name": "Background Color"
+      },
+      "其他佩饰": {
+        "name": "Other Accessories"
+      },
+      "seed": {
+        "name": "seed"
+      }
+    }
+  },
+  "GuHai_IDPhotoCrop": {
+    "display_name": "Goohai ID Photo Crop",
+    "description": "Detects faces with MediaPipe and crops an ID photo from a custom face ratio and vertical offset, with face correction and size control. Not suitable for full-body shots where the face is very small.",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "人脸矫正": {
+        "name": "Face Correction"
+      },
+      "预设尺寸": {
+        "name": "Preset Size"
+      },
+      "自定义宽": {
+        "name": "Custom Width"
+      },
+      "自定义高": {
+        "name": "Custom Height"
+      },
+      "单位": {
+        "name": "Unit"
+      },
+      "DPI": {
+        "name": "DPI"
+      },
+      "脸部大小": {
+        "name": "Face Size"
+      },
+      "垂直偏移": {
+        "name": "Vertical Offset"
+      },
+      "尺寸限制": {
+        "name": "Size Limit"
+      },
+      "填充模式": {
+        "name": "Fill Mode"
+      },
+      "自定义填充色": {
+        "name": "Custom Fill Color"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Cropped Image"
+      },
+      "1": {
+        "name": "Is Outpaint"
+      },
+      "2": {
+        "name": "Extend Mask"
+      },
+      "3": {
+        "name": "DPI"
+      }
+    }
+  },
+  "IDCardCorrectionAndComposition": {
+    "display_name": "Goohai ID Card Auto Straighten & Layout",
+    "inputs": {
+      "front_image": {
+        "name": "front_image"
+      },
+      "front_mask": {
+        "name": "front_mask"
+      },
+      "画布宽_cm": {
+        "name": "Canvas Width_cm"
+      },
+      "画布高_cm": {
+        "name": "Canvas Height_cm"
+      },
+      "图像间距_cm": {
+        "name": "Image Spacing_cm"
+      },
+      "阴影大小": {
+        "name": "Shadow Size"
+      },
+      "阴影模糊": {
+        "name": "Shadow Blur"
+      },
+      "阴影不透明度": {
+        "name": "Shadow Opacity"
+      },
+      "自动对比度强度": {
+        "name": "Auto Contrast Strength"
+      },
+      "自动色调强度": {
+        "name": "Auto Tone Strength"
+      },
+      "黑白": {
+        "name": "Black & White"
+      },
+      "水印开关": {
+        "name": "Watermark Toggle"
+      },
+      "水印文字": {
+        "name": "Watermark Text"
+      },
+      "水印字体": {
+        "name": "Watermark Font"
+      },
+      "水印大小": {
+        "name": "Watermark Size"
+      },
+      "水印颜色": {
+        "name": "Watermark Color"
+      },
+      "水印不透明度": {
+        "name": "Watermark Opacity"
+      },
+      "水印间距": {
+        "name": "Watermark Spacing"
+      },
+      "水印角度": {
+        "name": "Watermark Angle"
+      },
+      "背景色": {
+        "name": "Background Color"
+      },
+      "back_image": {
+        "name": "back_image"
+      },
+      "back_mask": {
+        "name": "back_mask"
+      }
+    }
+  },
+  "AlignMaskCenter_孤海": {
+    "display_name": "Goohai Mask Center Align",
+    "inputs": {
+      "主体遮罩": {
+        "name": "Subject Mask"
+      },
+      "参考遮罩": {
+        "name": "Reference Mask"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Aligned Mask"
+      }
+    }
+  },
+  "孤海遮罩分析": {
+    "display_name": "Goohai Mask Analysis",
+    "inputs": {
+      "遮罩": {
+        "name": "Mask"
+      },
+      "上扩百分比": {
+        "name": "Top Expand Percent"
+      },
+      "下扩百分比": {
+        "name": "Bottom Expand Percent"
+      },
+      "左扩百分比": {
+        "name": "Left Expand Percent"
+      },
+      "右扩百分比": {
+        "name": "Right Expand Percent"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Mask"
+      },
+      "1": {
+        "name": "Canvas Width"
+      },
+      "2": {
+        "name": "Canvas Height"
+      },
+      "3": {
+        "name": "Mask Width"
+      },
+      "4": {
+        "name": "Mask Height"
+      },
+      "5": {
+        "name": "Mask Center X"
+      },
+      "6": {
+        "name": "Mask Center Y"
+      }
+    }
+  },
+  "MaskCornerFixer": {
+    "display_name": "Goohai Mask Corner Rounding Fix",
+    "description": "Removes rounded mask corners, keeping the four edges intact and restoring the corners.",
+    "inputs": {
+      "mask": {
+        "name": "mask"
+      },
+      "trim_percent": {
+        "name": "trim_percent"
+      }
+    }
+  },
+  "孤海-遮罩对齐": {
+    "display_name": "Goohai Mask Align v2",
+    "description": "Aligns a mask to a target position.",
+    "inputs": {
+      "遮罩": {
+        "name": "Mask"
+      },
+      "水平对齐": {
+        "name": "Horizontal Align"
+      },
+      "垂直对齐": {
+        "name": "Vertical Align"
+      },
+      "合并BBOX": {
+        "name": "Merge BBOX"
+      },
+      "参考遮罩": {
+        "name": "Reference Mask"
+      }
+    }
+  },
+  "GuHaiMaskDetect": {
+    "display_name": "Goohai Mask Detect",
+    "description": "Automatically detects the valid region of an input mask.",
+    "inputs": {
+      "遮罩": {
+        "name": "Mask"
+      },
+      "过滤最小值": {
+        "name": "Filter Min"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Has Mask"
+      }
+    }
+  },
+  "GH_MaskGrowthBlur": {
+    "display_name": "Goohai Mask Blur & Grow by Ratio",
+    "inputs": {
+      "遮罩": {
+        "name": "Mask"
+      },
+      "生长百分比": {
+        "name": "Grow Percent"
+      },
+      "模糊百分比": {
+        "name": "Blur Percent"
+      },
+      "填充孔洞": {
+        "name": "Fill Holes"
+      },
+      "圆角模式": {
+        "name": "Corner Radius Mode"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Mask"
+      },
+      "1": {
+        "name": "Inverted Mask"
+      }
+    }
+  },
+  "孤海遮罩比例计算": {
+    "display_name": "Goohai Mask Ratio Calculate",
+    "inputs": {
+      "mask": {
+        "name": "mask"
+      },
+      "扩展百分比": {
+        "name": "Expand Percent"
+      },
+      "模糊百分比": {
+        "name": "Blur Percent"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Extend Int"
+      },
+      "1": {
+        "name": "Extend Float"
+      },
+      "2": {
+        "name": "Blur Int"
+      },
+      "3": {
+        "name": "Blur Float"
+      }
+    }
+  },
+  "孤海-遮罩混合运算": {
+    "display_name": "Goohai Mask Blend Operations",
+    "inputs": {
+      "混合模式": {
+        "name": "Blend Mode"
+      },
+      "BBOX": {
+        "name": "BBOX"
+      },
+      "对齐方式": {
+        "name": "Alignment"
+      },
+      "遮罩1": {
+        "name": "Mask 1"
+      },
+      "遮罩2": {
+        "name": "Mask 2"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Mask"
+      },
+      "1": {
+        "name": "Mask Width"
+      },
+      "2": {
+        "name": "Mask Height"
+      }
+    }
+  },
+  "GuHaiMaskCrop": {
+    "display_name": "Goohai Mask Crop",
+    "inputs": {
+      "image": {
+        "name": "image"
+      },
+      "mask": {
+        "name": "mask"
+      },
+      "top_extend": {
+        "name": "top_extend"
+      },
+      "bottom_extend": {
+        "name": "bottom_extend"
+      },
+      "left_extend": {
+        "name": "left_extend"
+      },
+      "right_extend": {
+        "name": "right_extend"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "cropped_image"
+      },
+      "1": {
+        "name": "boundary_mask"
+      },
+      "2": {
+        "name": "is_out_of_bounds"
+      }
+    }
+  },
+  "GH_MaskCropV2": {
+    "display_name": "Goohai Mask Crop V2",
+    "inputs": {
+      "图像": {
+        "name": "Image"
+      },
+      "遮罩": {
+        "name": "Mask"
+      },
+      "遮罩填充": {
+        "name": "Mask Fill"
+      },
+      "扩展系数上": {
+        "name": "Expand Factor Top"
+      },
+      "扩展系数下": {
+        "name": "Expand Factor Bottom"
+      },
+      "扩展系数左": {
+        "name": "Expand Factor Left"
+      },
+      "扩展系数右": {
+        "name": "Expand Factor Right"
+      },
+      "输出尺寸": {
+        "name": "Output Size"
+      },
+      "自定义宽": {
+        "name": "Custom Width"
+      },
+      "自定义高": {
+        "name": "Custom Height"
+      },
+      "倍数取整": {
+        "name": "Round To Multiple"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Seam"
+      },
+      "1": {
+        "name": "Crop Image"
+      },
+      "2": {
+        "name": "Crop Mask"
+      }
+    }
+  },
+  "GH_CropRestore": {
+    "display_name": "Goohai Crop Restore",
+    "inputs": {
+      "接缝": {
+        "name": "Seam"
+      },
+      "裁剪图像": {
+        "name": "Crop Image"
+      },
+      "遮罩扩展百分比": {
+        "name": "Mask Expand Percent"
+      },
+      "遮罩羽化百分比": {
+        "name": "Mask Feather Percent"
+      },
+      "裁剪遮罩": {
+        "name": "Crop Mask"
+      },
+      "背景图像": {
+        "name": "Background Image"
+      },
+      "颜色还原强度": {
+        "name": "Color Restore Strength",
+        "tooltip": "Compare with the corresponding cropped region of the original image and correct the brightness and color of the returned crop; 0 disables it."
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      }
+    }
+  },
+  "GuHai_FaceAlignment": {
+    "display_name": "Goohai Face Alignment",
+    "description": "Detects faces with MediaPipe and aligns them; compatible with MediaPipe 0.10.21- and 0.10.30+.",
+    "inputs": {
+      "目标图": {
+        "name": "Target Image"
+      },
+      "面部置信度": {
+        "name": "Face Confidence"
+      },
+      "角度对齐": {
+        "name": "Angle Align"
+      },
+      "填充模式": {
+        "name": "Fill Mode"
+      },
+      "参考图": {
+        "name": "Reference Image"
+      },
+      "自定义填充色": {
+        "name": "Custom Fill Color"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image"
+      }
+    }
+  },
+  "LoneSeaPresetSize": {
+    "display_name": "Goohai Preset Size",
+    "inputs": {
+      "预设尺寸": {
+        "name": "Preset Size"
+      },
+      "dpi": {
+        "name": "dpi"
+      },
+      "自定义宽度": {
+        "name": "Custom Width"
+      },
+      "自定义高度": {
+        "name": "Custom Height"
+      },
+      "单位": {
+        "name": "Unit"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Width"
+      },
+      "1": {
+        "name": "Height"
+      },
+      "2": {
+        "name": "Resolution"
+      }
+    }
+  },
+  "ColorConverterGuhai": {
+    "display_name": "Color Converter Goohai",
+    "description": "Color space conversion node (HSV/RGB/LAB).",
+    "inputs": {
+      "色值": {
+        "name": "Color Value"
+      },
+      "转换后": {
+        "name": "After Conversion"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "String"
+      },
+      "1": {
+        "name": "Color Control"
+      }
+    }
+  },
+  "取色器_孤海": {
+    "display_name": "Goohai 🎨 Color Picker",
+    "description": "Color picker node with multiple color format outputs.",
+    "inputs": {
+      "颜色": {
+        "name": "Color"
+      },
+      "模式": {
+        "name": "Mode"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Color Control"
+      },
+      "1": {
+        "name": "String"
+      }
+    }
+  },
+  "孤海-取色器": {
+    "display_name": "Goohai Color Picker (Dual)",
+    "description": "Color picker node that outputs the color mode and color value.",
+    "inputs": {
+      "模式": {
+        "name": "Mode"
+      },
+      "主色": {
+        "name": "Main Color"
+      },
+      "辅色": {
+        "name": "Secondary Color"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Mode"
+      },
+      "1": {
+        "name": "Dominant Color"
+      },
+      "2": {
+        "name": "Secondary Color"
+      }
+    }
+  },
+  "孤海-自定义颜色": {
+    "display_name": "Goohai Custom Color",
+    "inputs": {
+      "宽度": {
+        "name": "Width"
+      },
+      "高度": {
+        "name": "Height"
+      },
+      "模式": {
+        "name": "Mode"
+      },
+      "颜色1": {
+        "name": "Color 1"
+      },
+      "颜色2": {
+        "name": "Color 2"
+      },
+      "缩放": {
+        "name": "Scale"
+      },
+      "颗粒": {
+        "name": "Grain"
+      }
+    }
+  }
+}
