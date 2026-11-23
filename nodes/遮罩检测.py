@@ -28,7 +28,7 @@ class GuHaiMaskDetect:
     RETURN_TYPES = ("BOOLEAN",)
     RETURN_NAMES = ("是否存在遮罩",)
     FUNCTION = "detect"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def detect(self, 遮罩, 过滤最小值):
         # 将遮罩转为numpy数组
@@ -58,5 +58,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHaiMaskDetect": "孤海遮罩检测"
+    "GuHaiMaskDetect": "Goohai Mask Detect"
 }

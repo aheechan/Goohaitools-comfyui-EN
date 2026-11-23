@@ -16,7 +16,7 @@ class 孤海_文件夹索引:
     RETURN_TYPES = ("STRING", "INT", "STRING")
     RETURN_NAMES = ("子目录", "目录总数", "路径")
     FUNCTION = "获取目录信息"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 获取目录信息(self, 文件夹路径, 起始索引, 处理总数):
         # 检查文件夹路径有效性
@@ -64,4 +64,4 @@ class 孤海_文件夹索引:
         return (子目录名, 目录总数, 完整路径)
 
 NODE_CLASS_MAPPINGS = {"孤海-文件夹索引": 孤海_文件夹索引}
-NODE_DISPLAY_NAME_MAPPINGS = {"孤海-文件夹索引": "孤海-文件夹索引"}
+NODE_DISPLAY_NAME_MAPPINGS = {"孤海-文件夹索引": "Goohai Folder Index"}

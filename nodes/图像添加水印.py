@@ -47,7 +47,7 @@ class 孤海_图像添加水印:
     
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "添加水印"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def 添加水印(self, 图像, 水印文本, 字体, 水印大小百分比, 水印不透明度,
                   水平位置, 垂直位置, X偏移百分比, Y偏移百分比,
@@ -255,5 +255,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-图像添加水印": "孤海-图像添加水印"
+    "孤海-图像添加水印": "Goohai Image Watermark"
 }

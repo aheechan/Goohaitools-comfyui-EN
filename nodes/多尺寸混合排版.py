@@ -66,7 +66,7 @@ class MultiSizeLayoutNode_ZH:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "layout_images"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def layout_images(self, **kwargs):
         unit = kwargs["单位"]
@@ -387,5 +387,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MultiSizeLayoutNode_ZH": "孤海-多尺寸混合排版"
+    "MultiSizeLayoutNode_ZH": "Goohai Multi-size Mixed Layout"
 }

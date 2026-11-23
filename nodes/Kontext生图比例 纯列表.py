@@ -37,7 +37,7 @@ class 孤海Kontext比例节点:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("比例",)  # 输出端名称改为"比例"
     FUNCTION = "获取比例"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 获取比例(self, 比例选择):
         # 直接返回选择的字符串
@@ -49,5 +49,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海Kontext比例节点": "孤海-Kontext生图比例 | 纯列表"
+    "孤海Kontext比例节点": "Goohai Kontext Aspect Ratio | List"
 }

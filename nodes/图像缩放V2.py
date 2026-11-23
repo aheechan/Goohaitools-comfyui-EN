@@ -29,7 +29,7 @@ class 图像缩放V2_孤海:
     RETURN_TYPES = ("IMAGE", "INT", "INT", "MASK")
     RETURN_NAMES = ("图像", "宽度", "高度", "遮罩")
     FUNCTION = "执行缩放"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 执行缩放(self, 图像=None, 缩放方法="按长边等比例", 宽度=512, 高度=512,
               将边缩放到=1024, 缩放插值="Lanczos", 缩放模式="裁剪",
@@ -746,7 +746,7 @@ class 长边短边:
     RETURN_TYPES = ("INT", "INT", "FLOAT")
     RETURN_NAMES = ("长边", "短边", "比值")
     FUNCTION = "计算"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     @staticmethod
     def _安全整数(数值):
@@ -806,6 +806,6 @@ NODE_CLASS_MAPPINGS = {
     "长边短边": 长边短边,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "图像缩放V2_孤海": "图像缩放V2 孤海",
-    "长边短边": "长边短边",
+    "图像缩放V2_孤海": "Image Scale V2 Goohai",
+    "长边短边": "Long/Short Edge",
 }

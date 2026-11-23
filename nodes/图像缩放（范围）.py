@@ -24,8 +24,8 @@ class 图像缩放范围孤海:
     RETURN_TYPES = ("IMAGE", "MASK")
     RETURN_NAMES = ("图像", "遮罩")
     FUNCTION = "resize_image_range"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "把图像与遮罩尺寸限制到指定范围 - 支持多种限制模式的高质量图像缩放"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Constrains image and mask size to a target range with several high-quality scaling modes."
     
     def resize_image_range(self, 图像=None, 遮罩=None, 限制模式="长边", 最小尺寸=1024, 最大尺寸=3000, 整除数=0):
         # 检查至少有一个输入
@@ -342,5 +342,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "图像缩放范围孤海": "图像缩放（范围）孤海"
+    "图像缩放范围孤海": "Image Scale (Range) Goohai"
 }

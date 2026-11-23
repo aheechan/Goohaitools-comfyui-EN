@@ -290,7 +290,7 @@ class IDCardCorrectionAndComposition:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "process"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def process(self, front_image, front_mask, 
                 back_image=None, back_mask=None,
@@ -424,5 +424,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "IDCardCorrectionAndComposition": "孤海-身份证自动扶正拼版"
+    "IDCardCorrectionAndComposition": "Goohai ID Card Auto Straighten & Layout"
 }

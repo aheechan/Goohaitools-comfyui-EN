@@ -28,7 +28,7 @@ class 孤海_遮罩裁剪V2:
     RETURN_TYPES = ("SEAM", "IMAGE", "MASK")
     RETURN_NAMES = ("接缝", "裁剪图像", "裁剪遮罩")
     FUNCTION = "裁剪图像"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 填充遮罩孔洞(self, 遮罩_np):
         """填充遮罩内部的孔洞"""
@@ -469,7 +469,7 @@ class 孤海_裁剪恢复:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("图像",)
     FUNCTION = "恢复图像"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def tensor2pil(self, image):
         """将tensor转换为PIL图像"""
@@ -891,6 +891,6 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GH_MaskCropV2": "孤海-遮罩裁剪V2",
-    "GH_CropRestore": "孤海-裁剪恢复"
+    "GH_MaskCropV2": "Goohai Mask Crop V2",
+    "GH_CropRestore": "Goohai Crop Restore"
 }

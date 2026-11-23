@@ -11,7 +11,7 @@ class MaskTopExpansion:
             }
         }
 
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     FUNCTION = "expand_mask"
     RETURN_TYPES = ("MASK",)
     RETURN_NAMES = ("new_mask",)
@@ -49,4 +49,4 @@ class MaskTopExpansion:
         return (new_mask.unsqueeze(0),)
 
 NODE_CLASS_MAPPINGS = {"MaskTopExpansion": MaskTopExpansion}
-NODE_DISPLAY_NAME_MAPPINGS = {"MaskTopExpansion": "孤海头顶遮罩"}
+NODE_DISPLAY_NAME_MAPPINGS = {"MaskTopExpansion": "Goohai Head-top Mask"}

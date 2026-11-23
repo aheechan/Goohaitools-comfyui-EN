@@ -12,7 +12,7 @@ class BoolGuHai:
     RETURN_TYPES = ("BOOLEAN",)
     RETURN_NAMES = ("布尔",)
     FUNCTION = "execute"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def execute(self, 开关):
         return (开关,)
@@ -23,5 +23,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "布尔孤海": "布尔 孤海",
+    "布尔孤海": "Boolean Goohai",
 }

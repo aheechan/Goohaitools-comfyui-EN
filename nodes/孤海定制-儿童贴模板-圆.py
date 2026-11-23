@@ -90,7 +90,7 @@ class GuhaiCustomChildrenStickerRound:
     RETURN_TYPES = ("STRING", "STRING")
     RETURN_NAMES = ("图像路径", "尺寸")
     FUNCTION = "get_selected"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
     
     def get_selected(self, 模板样式, 拼版尺寸):
         """根据选择输出对应的图像路径（自动转换路径分隔符）和尺寸"""
@@ -127,5 +127,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuhaiCustomChildrenStickerRound": "孤海定制-儿童贴模板-圆"
+    "GuhaiCustomChildrenStickerRound": "Goohai Custom Kids Sticker Template - Round"
 }

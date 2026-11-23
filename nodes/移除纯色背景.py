@@ -48,7 +48,7 @@ class RemoveSolidBackground:
     RETURN_TYPES = ("IMAGE", "MASK")
     RETURN_NAMES = ("透明背景图像", "遮罩")
     FUNCTION = "remove_background"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
 
     def remove_background(self, image, 颜色阈值, 边缘采样密度, 移除扩展, 模糊半径):
         # 转换图像格式
@@ -135,5 +135,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "RemoveSolidBackground_孤海V2": "孤海-移除纯色背景 v2"
+    "RemoveSolidBackground_孤海V2": "Goohai Remove Solid Background v2"
 }

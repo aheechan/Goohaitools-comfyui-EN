@@ -25,7 +25,7 @@ class 孤海图像与遮罩描边:
     RETURN_TYPES = ("IMAGE", "MASK")
     RETURN_NAMES = ("图像", "遮罩")
     FUNCTION = "apply_stroke"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def apply_stroke(self, 单位, 模式, 描边宽度, 描边颜色, 模糊, 平滑, 输出通道, image=None, mask=None):
         # 处理图像批次
@@ -466,5 +466,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-图像与遮罩描边": "孤海-图像与遮罩描边"
+    "孤海-图像与遮罩描边": "Goohai Image & Mask Outline"
 }

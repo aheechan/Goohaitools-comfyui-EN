@@ -15,7 +15,7 @@ class AlignMaskCenter:
     RETURN_TYPES = ("MASK",)
     RETURN_NAMES = ("对齐遮罩",)
     FUNCTION = "align"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def align(self, 主体遮罩, 参考遮罩):
         # 有效性检查
@@ -92,5 +92,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AlignMaskCenter_孤海": "孤海-遮罩中心对齐"
+    "AlignMaskCenter_孤海": "Goohai Mask Center Align"
 }

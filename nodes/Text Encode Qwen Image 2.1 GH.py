@@ -219,7 +219,7 @@ class TextEncodeQwenImage21GH:
     RETURN_TYPES = ("CONDITIONING", "CONDITIONING", "LATENT", RESTORE_INFO_TYPE)
     RETURN_NAMES = ("positive", "negative", "latent", "info")
     FUNCTION = "encode"
-    CATEGORY = "孤海工具箱/条件"
+    CATEGORY = "Goohai Tools/Conditioning"
     DESCRIPTION = "Qwen Image 2.1 conditioning with stable reference slots and aspect-safe reference sizing."
 
     def encode(self, clip, prompt, negative_prompt, mode, latent_width, latent_height, vae=None, mask=None, ref_image_size="自动", **kwargs):
@@ -341,7 +341,7 @@ class RestoreQwenImage21GH:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "restore"
-    CATEGORY = "孤海工具箱/图像"
+    CATEGORY = "Goohai Tools/Image"
     DESCRIPTION = "Removes the black canvas added by Text Encode Qwen Image 2.1 GH fill mode."
 
     def restore(self, image, info):
@@ -370,6 +370,6 @@ NODE_CLASS_MAPPINGS = {
     "RestoreQwenImage21GH": RestoreQwenImage21GH,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "TextEncodeQwenImage21GH": "Qwen Image 2.1 文本编码 GH",
+    "TextEncodeQwenImage21GH": "Qwen Image 2.1 Text Encode GH",
     "RestoreQwenImage21GH": "Restore Qwen Image 2.1 GH",
 }

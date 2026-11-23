@@ -29,7 +29,7 @@ class MarriageRegistrationCloth:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "execute"
-    CATEGORY = "孤海/结婚登记照"
+    CATEGORY = "Goohai/Marriage Registration"
 
     # ── 路径与文件列表 ──────────────────────────────
     @classmethod
@@ -107,5 +107,5 @@ NODE_CLASS_MAPPINGS = {
     "结婚登记照服装_孤海": MarriageRegistrationCloth,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "结婚登记照服装_孤海": "结婚登记照服装 孤海",
+    "结婚登记照服装_孤海": "Marriage Registration Outfit Goohai",
 }

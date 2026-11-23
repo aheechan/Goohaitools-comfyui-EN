@@ -26,7 +26,7 @@ class RemoveBackgroundWithMask:
     RETURN_TYPES = ("IMAGE", "IMAGE", "MASK")
     RETURN_NAMES = ("RGBA图像", "RGB图像", "遮罩")
     FUNCTION = "remove_background"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def remove_background(self, 图像, 遮罩, 遮罩填充漏洞, 遮罩裁剪, 裁剪系数, 图像描边, 描边颜色):
         # 获取批次大小
@@ -386,5 +386,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "RemoveBackgroundWithMask": "孤海-保留遮罩区域移除图像背景"
+    "RemoveBackgroundWithMask": "Goohai Remove Background Outside Mask"
 }

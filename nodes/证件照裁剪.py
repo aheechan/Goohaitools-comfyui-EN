@@ -78,8 +78,8 @@ class GuHaiIDPhotoCrop:
     RETURN_TYPES = ("IMAGE", "BOOLEAN", "MASK", "INT")
     RETURN_NAMES = ("裁剪后图像", "是否扩图", "扩展遮罩", "DPI")
     FUNCTION = "crop_face_idphoto"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "通过mediapipe检测人脸，根据自定义脸部比例和垂直偏移进行证件照裁剪，支持人脸矫正和尺寸控制，不适合人脸占比非常小的全身图。"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Detects faces with MediaPipe and crops an ID photo from a custom face ratio and vertical offset, with face correction and size control. Not suitable for full-body shots where the face is very small."
 
     def __init__(self):
         self.face_landmarker = None
@@ -719,5 +719,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHai_IDPhotoCrop": "孤海-证件照裁剪"
+    "GuHai_IDPhotoCrop": "Goohai ID Photo Crop"
 }

@@ -14,7 +14,7 @@ class SlashConverter:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("路径",)
     FUNCTION = "convert_slash"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def convert_slash(self, folder_path):
         # 空路径直接返回
@@ -48,5 +48,5 @@ class SlashConverter:
 
 # 节点描述
 NODE_CLASS_MAPPINGS = {"SlashConverter": SlashConverter}
-NODE_DISPLAY_NAME_MAPPINGS = {"SlashConverter": "孤海-自动切换正反斜杠"}
+NODE_DISPLAY_NAME_MAPPINGS = {"SlashConverter": "Goohai Auto Slash Converter"}
 

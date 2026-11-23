@@ -28,7 +28,7 @@ class ChildrenStickerRound:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("图像",)
     FUNCTION = "process"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
     
     def process(self, 图像, 尺寸, 保留透明通道, 文件名, 保存路径):
         # 只取第一张图像
@@ -185,5 +185,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "儿童贴拼版-圆": "孤海定制-儿童贴拼版-圆"
+    "儿童贴拼版-圆": "Goohai Custom Kids Sticker Layout - Round"
 }

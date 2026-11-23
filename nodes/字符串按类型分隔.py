@@ -35,7 +35,7 @@ class 字符串按类型分隔_孤海:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("字符串",)
     FUNCTION = "process"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def process(self, 字符串: str, 分隔符: str, 分隔类型: str) -> tuple:
         """处理字符串分隔逻辑"""
@@ -103,5 +103,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "字符串按类型分隔_孤海": "字符串按类型分隔 孤海"
+    "字符串按类型分隔_孤海": "Split String by Type Goohai"
 }

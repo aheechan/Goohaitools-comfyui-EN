@@ -33,7 +33,7 @@ class GoohaiUniversalSlider:
     RETURN_TYPES = (any_type,)
     RETURN_NAMES = ("*",)
     FUNCTION     = "execute"
-    CATEGORY     = "孤海工具箱"
+    CATEGORY     = "Goohai Tools"
 
     def execute(self, 值, output_type="float"):
         processed_value = round(值, 10)
@@ -56,5 +56,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GoohaiUniversalSlider": "孤海万能滑条",
+    "GoohaiUniversalSlider": "Goohai Universal Slider",
 }

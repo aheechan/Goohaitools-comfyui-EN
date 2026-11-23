@@ -24,7 +24,7 @@ class GH_18x6_Layout:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "layout_images"
-    CATEGORY = "孤海定制/排版"
+    CATEGORY = "Goohai Custom/Layout"
     
     def mm_to_pixels(self, mm, dpi):
         """将毫米转换为像素"""
@@ -161,5 +161,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GH_18x6_Layout": "孤海定制-谢旭中排版"
+    "GH_18x6_Layout": "Goohai Custom Layout 18x6"
 }

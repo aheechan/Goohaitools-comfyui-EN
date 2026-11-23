@@ -27,7 +27,7 @@ class 孤海图像亮度比较:
     RETURN_TYPES = ("BOOLEAN",)
     RETURN_NAMES = ("比较结果",)
     FUNCTION = "compare_brightness"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def calculate_brightness(self, image, mask=None):
         # 转换为PIL图像
@@ -69,5 +69,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海图像亮度比较": "孤海-图像亮度比较"
+    "孤海图像亮度比较": "Goohai Image Brightness Compare"
 }

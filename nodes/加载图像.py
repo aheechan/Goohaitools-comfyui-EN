@@ -1,4 +1,4 @@
-﻿import os
+import os
 import hashlib
 import json
 import math
@@ -371,5 +371,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "LoadImageGoohai": "加载图像 孤海",
+    "LoadImageGoohai": "Load Image Goohai",
 }

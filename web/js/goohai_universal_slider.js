@@ -143,7 +143,7 @@ function showSettings(node) {
 
     const title = document.createElement("div");
     title.className = "ghs-ptitle";
-    title.textContent = "🎮  孤海滑条 设置";
+    title.textContent = "🎮  Goohai Slider Settings";
     pl.appendChild(title);
 
     function addRow(labelText, el) {
@@ -168,13 +168,13 @@ function showSettings(node) {
     clrI.className = "ghs-clr";
     clrI.type = "color";
     clrI.value = p.sliderColor;
-    addRow("滑条颜色", clrI);
+    addRow("Slider Color", clrI);
 
     const radioWrap = document.createElement("div");
     radioWrap.className = "ghs-radio-wrap";
     const types = [
-        { v: "float", t: "浮点 (Float)" },
-        { v: "int",   t: "整数 (Integer)" },
+        { v: "float", t: "Float" },
+        { v: "int",   t: "Integer" },
     ];
     let selectedType = p.sliderType;
     types.forEach((opt) => {
@@ -189,32 +189,32 @@ function showSettings(node) {
         label.append(radio, document.createTextNode(opt.t));
         radioWrap.appendChild(label);
     });
-    addRow("类型", radioWrap);
+    addRow("Type", radioWrap);
 
     const minI = mkInp("number", p.sliderMin, { step: "any" });
-    addRow("最小值", minI);
+    addRow("Min Value", minI);
     const maxI = mkInp("number", p.sliderMax, { step: "any" });
-    addRow("最大值", maxI);
+    addRow("Max Value", maxI);
     const stepI = mkInp("number", p.sliderStep, { step: "any", min: "0.0001" });
-    addRow("步长", stepI);
+    addRow("Step", stepI);
     const lblI = mkInp("text", p.sliderLabel);
-    addRow("显示名称", lblI);
+    addRow("Display Name", lblI);
 
     const btns = document.createElement("div");
     btns.className = "ghs-btns";
     const bCancel = document.createElement("button");
     bCancel.className = "ghs-btn ghs-bx";
-    bCancel.textContent = "取消";
+    bCancel.textContent = "Cancel";
     bCancel.onclick = () => ov.remove();
     const bOk = document.createElement("button");
     bOk.className = "ghs-btn ghs-bok";
-    bOk.textContent = "确定";
+    bOk.textContent = "OK";
     bOk.onclick = () => {
         let type  = selectedType;
         let mn    = parseFloat(minI.value);
         let mx    = parseFloat(maxI.value);
         let step  = parseFloat(stepI.value);
-        let label = (lblI.value || "").trim() || "值";
+        let label = (lblI.value || "").trim() || "Value";
         let color = clrI.value;
 
         if (isNaN(mn)) mn = 0;
@@ -420,7 +420,7 @@ function setupSliderDom(node) {
 function setupSlider(node) {
     const D = {
         sliderType: "float", sliderMin: 0, sliderMax: 1,
-        sliderStep: 0.01, sliderLabel: "值", sliderColor: "#e8c547",
+        sliderStep: 0.01, sliderLabel: "Value", sliderColor: "#e8c547",
     };
     if (!node.properties) node.properties = {};
     for (const [k, v] of Object.entries(D)) {
@@ -584,7 +584,7 @@ app.registerExtension({
             }
             if (Array.isArray(options)) {
                 options.splice(0, 0, null, {
-                    content: "🎮  孤海滑条 设置",
+                    content: "🎮  Goohai Slider Settings",
                     callback: () => showSettings(this),
                 });
             }

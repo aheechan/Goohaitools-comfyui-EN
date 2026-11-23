@@ -5,10 +5,10 @@ const NODE_TYPE = "GH_ImageVideoComparer";
 const STATE_KEY = "gh_image_video_comparer_state_v1";
 const MEDIA_KEY = "gh_image_video_comparer_media_v1";
 const VIEW_MODES = [
-    ["slide", "滑动对比"],
-    ["auto", "自动双拼"],
-    ["horizontal", "左右双拼"],
-    ["vertical", "上下双拼"],
+    ["slide", "Slide Compare"],
+    ["auto", "Auto Split"],
+    ["horizontal", "Side by Side"],
+    ["vertical", "Top / Bottom"],
 ];
 const SPEEDS = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2];
 const LABEL_HEIGHT = 20;
@@ -329,9 +329,9 @@ function connectedOutputType(node, inputIndex) {
 
 function labelFor(kind, side) {
     const suffix = side === "a" ? "a" : "b";
-    if (kind === "image") return `图像 ${suffix}`;
-    if (kind === "video") return `视频 ${suffix}`;
-    return `图像/视频 ${suffix}`;
+    if (kind === "image") return `Image ${suffix}`;
+    if (kind === "video") return `Video ${suffix}`;
+    return `Image/Video ${suffix}`;
 }
 
 function enforcedKind(node) {
@@ -520,13 +520,13 @@ function updateVideoControls(state) {
         item.style.opacity = playable ? "1" : "0.45";
         item.style.cursor = playable ? "pointer" : "not-allowed";
     }
-    state.fullscreenButton.textContent = document.fullscreenElement === state.root ? "退出全屏" : "全屏";
+    state.fullscreenButton.textContent = document.fullscreenElement === state.root ? "Exit Fullscreen" : "Fullscreen";
     state.transportButton.dataset.playing = String(state.playing);
-    state.transportButton.title = state.playing ? "停止并回到首帧" : "播放";
+    state.transportButton.title = state.playing ? "Stop and return to first frame" : "Play";
     state.transportButton.setAttribute("aria-label", state.transportButton.title);
     state.transportButton.disabled = !playable;
     state.speedButton.textContent = `${state.speed}x`;
-    state.audioButton.textContent = state.audioMode === "both" ? "音频 A+B" : state.audioMode === "a" ? "音频 A" : state.audioMode === "b" ? "音频 B" : "静音";
+    state.audioButton.textContent = state.audioMode === "both" ? "Audio A+B" : state.audioMode === "a" ? "Audio A" : state.audioMode === "b" ? "Audio B" : "Mute";
 }
 
 function applyAudio(state) {
@@ -668,7 +668,7 @@ function setView(state, mode) {
     state.view = VIEW_MODES.some(([key]) => key === mode) ? mode : "slide";
     state.node.properties ??= {};
     state.node.properties[STATE_KEY] = { view: state.view, position: state.position, speed: state.speed, audioMode: state.audioMode, syncEnabled: state.syncEnabled };
-    state.viewButton.textContent = VIEW_MODES.find(([key]) => key === state.view)?.[1] || "滑动对比";
+    state.viewButton.textContent = VIEW_MODES.find(([key]) => key === state.view)?.[1] || "Slide Compare";
 
     const layout = effectiveView(state);
     const slide = layout === "slide";
@@ -905,14 +905,14 @@ function addMediaMenuOptions(state, event, options) {
     if (!pointInsideComparerStage(state, event)) return;
     const data = mediaForMenuEvent(state, event);
     if (!data) return;
-    const label = data.kind === "video" ? "视频" : "图像";
+    const label = data.kind === "video" ? "Video" : "Image";
     options.unshift(
         {
-            content: `复制${label}`,
+            content: `Copy ${label}`,
             callback: () => copyMedia(data).catch((error) => console.error("[GoohaiTools] copy media failed", error)),
         },
         {
-            content: `保存${label}`,
+            content: `Save ${label}`,
             callback: () => saveMedia(data).catch((error) => console.error("[GoohaiTools] save media failed", error)),
         },
     );
@@ -1442,7 +1442,7 @@ function updateBatchSelector(state) {
                 cursor: "pointer", fontSize: "16px", lineHeight: "24px", whiteSpace: "nowrap",
             }, `${prefix}${index + 1}`);
             item.type = "button";
-            item.title = `切换${prefix}批次 ${index + 1}`;
+            item.title = `Switch ${prefix} batch ${index + 1}`;
             item.addEventListener("click", (event) => {
                 event.preventDefault();
                 event.stopPropagation();
@@ -1531,7 +1531,7 @@ function createComparer(node) {
     const root = el("div", { width: "100%", height: "100%", minHeight: "0", display: "flex", flexDirection: "column", boxSizing: "border-box", padding: "0", color: "#eee", fontFamily: "Arial, sans-serif" });
     root.classList.add("gh-comparer");
     const top = el("div", { display: "flex", flex: "0 0 auto", alignItems: "center", gap: "6px", marginBottom: "2px", position: "relative", flexWrap: "wrap" });
-    const viewButton = button(VIEW_MODES.find(([key]) => key === initialView)?.[1] || "滑动对比", "切换对比视图", (event) => {
+    const viewButton = button(VIEW_MODES.find(([key]) => key === initialView)?.[1] || "Slide Compare", "Switch compare view", (event) => {
         const currentIndex = VIEW_MODES.findIndex(([key]) => key === state.view);
         const nextMode = VIEW_MODES[(currentIndex + 1) % VIEW_MODES.length]?.[0] || "slide";
         setView(state, nextMode);
@@ -1591,7 +1591,7 @@ function createComparer(node) {
     progress.type = "range"; progress.min = "0"; progress.max = "1000"; progress.step = "any"; progress.value = "0";
     Object.assign(progress.style, { flex: "1", minWidth: "80px" });
     const time = el("span", { minWidth: "72px", fontSize: "11px", textAlign: "right", color: "#cfd4dc", whiteSpace: "nowrap" }, "0:00 / 0:00");
-    const transportButton = button("", "播放", () => {
+    const transportButton = button("", "Play", () => {
         if (!state.playing) { togglePlayback(state); return; }
         state.frameStepIndex = null;
         state.playing = false;
@@ -1613,18 +1613,18 @@ function createComparer(node) {
         aElement: null, bElement: null, lineVisible: false, previewBounds: null,
     };
 
-    state.speedButton = button("1x", "切换播放速度", () => {
+    state.speedButton = button("1x", "Switch playback speed", () => {
         state.speed = SPEEDS[(SPEEDS.indexOf(state.speed) + 1) % SPEEDS.length];
         videos(state).forEach((video) => { video.playbackRate = state.speed; });
         updateVideoControls(state);
     });
-    state.audioButton = button("静音", "切换音频 A / 音频 B / 音频 A+B / 静音", () => {
+    state.audioButton = button("Mute", "Switch audio A / Audio B / Audio A+B / Mute", () => {
         state.audioMode = state.audioMode === "none" ? "a" : state.audioMode === "a" ? "b" : state.audioMode === "b" ? "both" : "none";
         state.node.properties ??= {};
         state.node.properties[STATE_KEY] = { view: state.view, position: state.position, speed: state.speed, audioMode: state.audioMode, syncEnabled: state.syncEnabled };
         applyAudio(state);
     });
-    state.fullscreenButton = button("全屏", "全屏对比", async () => {
+    state.fullscreenButton = button("Fullscreen", "Fullscreen compare", async () => {
         if (document.fullscreenElement === root) await document.exitFullscreen?.();
         else await root.requestFullscreen?.();
     });

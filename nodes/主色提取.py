@@ -32,7 +32,7 @@ class ExtractDominantColor:
     RETURN_TYPES = ("STRING",)  # 显式声明单一输出
     RETURN_NAMES = ("主色HEX",)
     FUNCTION = "extract_color"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def extract_color(self, image, 降采样系数, 颜色容差):
         # 多版本张量处理兼容
@@ -92,4 +92,4 @@ class ExtractDominantColor:
         return tuple((c // tolerance) * tolerance for c in color)
 
 NODE_CLASS_MAPPINGS = {"ExtractDominantColor": ExtractDominantColor}
-NODE_DISPLAY_NAME_MAPPINGS = {"ExtractDominantColor": "孤海-主色提取 (多版本兼容)"}
+NODE_DISPLAY_NAME_MAPPINGS = {"ExtractDominantColor": "Goohai Dominant Color (Multi-version)"}

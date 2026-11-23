@@ -62,7 +62,7 @@ class GH_BatchLayout:
     RETURN_TYPES = ("IMAGE", "STRING")
     RETURN_NAMES = ("图像", "完成报告")
     FUNCTION = "process"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def process(self, **kwargs):
         参数 = self.预处理参数(kwargs)
@@ -591,4 +591,4 @@ class GH_BatchLayout:
         )
 
 NODE_CLASS_MAPPINGS = {"GH_BatchLayout": GH_BatchLayout}
-NODE_DISPLAY_NAME_MAPPINGS = {"GH_BatchLayout": "孤海批量自动排版"}
+NODE_DISPLAY_NAME_MAPPINGS = {"GH_BatchLayout": "Goohai Batch Auto Layout"}

@@ -40,7 +40,7 @@ class GuHaiIDPhotoLayout:
     RETURN_TYPES = ("IMAGE", "STRING")
     RETURN_NAMES = ("排版图像", "尺寸名")
     FUNCTION = "layout_photos"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
 
     def cm_to_pixel(self, cm, dpi):
         """将厘米转换为像素"""
@@ -703,5 +703,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-证件照排版（A5定制）": "孤海-证件照排版（A5定制）"
+    "孤海-证件照排版（A5定制）": "Goohai ID Photo Layout (A5 Custom)"
 }

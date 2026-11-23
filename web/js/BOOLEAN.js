@@ -69,7 +69,7 @@ function buildCustomSwitch(node) {
     if (!boolWidget) return;
 
     let isOn = !!boolWidget.value;
-    let labelText = (node.properties && node.properties.guhai_label) || "开关";
+    let labelText = (node.properties && node.properties.guhai_label) || "Switch";
     let domWidget = null;
     let domLabel = null;
     let domToggle = null;
@@ -144,7 +144,7 @@ function buildCustomSwitch(node) {
             input.select();
             const finish = () => {
                 if (!input.isConnected) return;
-                labelText = input.value.trim() || "开关";
+                labelText = input.value.trim() || "Switch";
                 node.properties = node.properties || {};
                 node.properties.guhai_label = labelText;
                 input.replaceWith(domLabel);
@@ -197,7 +197,7 @@ function buildCustomSwitch(node) {
     /* ── 工作流加载后同步 UI ── */
     node._guhaiSyncUI = () => {
         setBoolValue(boolWidget.value, false);
-        labelText = (node.properties && node.properties.guhai_label) || "开关";
+        labelText = (node.properties && node.properties.guhai_label) || "Switch";
         redraw();
         syncDom();
     };

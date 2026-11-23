@@ -69,7 +69,7 @@ class ChildrenCollageNode:
     
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "layout_images"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
     
     def layout_images(self, image, 版式, 保留透明通道, 文件名, 保存路径):
         # 只取批次中的第一张图像
@@ -354,5 +354,5 @@ NODE_CLASS_MAPPINGS = {
     "孤海定制-儿童贴拼版-长": ChildrenCollageNode
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海定制-儿童贴拼版-长": "孤海定制 - 儿童贴拼版 - 长"
+    "孤海定制-儿童贴拼版-长": "Goohai Custom Kids Sticker Layout - Long"
 }

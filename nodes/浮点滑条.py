@@ -22,7 +22,7 @@ class GHFloatSliderNode:
 
     RETURN_TYPES = ("FLOAT",)
     RETURN_NAMES = ("浮点",)
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     FUNCTION = "get_value"
 
     def get_value(self, 数值):  
@@ -50,7 +50,7 @@ class GHFloatSliderNode0To2:
 
     RETURN_TYPES = ("FLOAT",)
     RETURN_NAMES = ("浮点",)
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     FUNCTION = "get_value"
 
     def get_value(self, 数值):  
@@ -65,6 +65,6 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-浮点滑条": "孤海-浮点滑条",
-    "孤海-浮点滑条 0-2": "孤海-浮点滑条 0-2"
+    "孤海-浮点滑条": "Goohai Float Slider",
+    "孤海-浮点滑条 0-2": "Goohai Float Slider 0-2"
 }

@@ -54,8 +54,8 @@ class GuHaiFaceAlignment:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("图像",)
     FUNCTION = "align_faces"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "通过mediapipe检测人脸并进行面部对齐，自动适配mediapipe 0.10.21-和0.10.30+版本"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Detects faces with MediaPipe and aligns them; compatible with MediaPipe 0.10.21- and 0.10.30+."
 
     def __init__(self):
         self.face_landmarker = None
@@ -658,5 +658,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHai_FaceAlignment": "孤海-面部对齐"
+    "GuHai_FaceAlignment": "Goohai Face Alignment"
 }

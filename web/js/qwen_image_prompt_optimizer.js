@@ -124,7 +124,7 @@ function widgetValue(node, names) {
 }
 
 function dependencyMessage(message, success = false) {
-    const text = String(message || "未知错误");
+    const text = String(message || "Unknown error");
     const escaped = text
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
@@ -154,20 +154,20 @@ async function installLlamaDependencyButton(node) {
     }
     if (!status?.needs_install || node._goohaiLlamaInstallWidget) return;
     const canInstall = status.supported === true;
-    const label = "llama-cpp需0.3.48以上，点击自动安装";
+    const label = "llama-cpp 0.3.48+ required; click to install";
     const widget = node.addWidget("button", label, null, async () => {
         if (!canInstall) {
-            dependencyMessage(`${status.reason}\n请从以下地址手动安装：\n${status.release_url}`);
+            dependencyMessage(`${status.reason}\nPlease install manually from the following URL:\n${status.release_url}`);
             window.open(status.release_url, "_blank", "noopener,noreferrer");
             return;
         }
         const confirmed = window.confirm(
-            `${status.installed_version ? `当前 llama-cpp-python 版本：${status.installed_version}` : "当前未安装 llama-cpp-python"}`
-            + `\n\n将使用当前 ComfyUI 的 Python 自动安装匹配 ${status.backend} 的最新官方 wheel。安装后必须完全重启 ComfyUI。`
-            + "此安装需从github下载轮子，请确保网络能正常访问github才能安装成功。是否继续？",
+            `${status.installed_version ? `Current llama-cpp-python version: ${status.installed_version}` : "llama-cpp-python is not installed"}`
+            + `\n\nThe current ComfyUI Python will install the latest official wheel matching ${status.backend}. ComfyUI must be fully restarted after installation.`
+            + "This install downloads the wheel from GitHub; make sure GitHub is reachable for the install to succeed. Continue?",
         );
         if (!confirmed) return;
-        widget.name = "正在安装 llama-cpp...";
+        widget.name = "Installing llama-cpp...";
         widget.label = widget.name;
         node.setDirtyCanvas?.(true, true);
         try {
@@ -178,14 +178,14 @@ async function installLlamaDependencyButton(node) {
             });
             const result = await response.json();
             if (!response.ok || !result?.success) throw new Error(result?.message || `HTTP ${response.status}`);
-            widget.name = "安装完成，请重启 ComfyUI";
+            widget.name = "Installation complete. Restart ComfyUI";
             widget.label = widget.name;
             widget.callback = () => dependencyMessage(result.message, true);
-            dependencyMessage(`${result.message}\n\n已安装：${result.wheel}`, true);
+            dependencyMessage(`${result.message}\n\nInstalled: ${result.wheel}`, true);
         } catch (error) {
-            widget.name = "安装失败，点击重试";
+            widget.name = "Installation failed, click to retry";
             widget.label = widget.name;
-            dependencyMessage(`llama-cpp-python 安装失败：\n${error?.message || error}\n\n可前往发布页手动安装：\n${status.release_url}`);
+            dependencyMessage(`llama-cpp-python installation failed:\n${error?.message || error}\n\nYou can install manually from the release page:\n${status.release_url}`);
         }
         node.setDirtyCanvas?.(true, true);
     });
@@ -356,7 +356,7 @@ function sync(node) {
     for (const slot of slots) {
         if (!isImageInput(slot)) continue;
         slot.name = imageName(number);
-        slot.label = `图像 ${number + 1}`;
+        slot.label = `Image ${number + 1}`;
         number += 1;
     }
     syncSkillInput(node);

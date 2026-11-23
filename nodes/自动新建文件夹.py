@@ -19,7 +19,7 @@ class GuHaiCreateAutoFolder:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("output_path",)
     FUNCTION = "create_folder"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def get_separator(self, path_str):
         """根据路径字符串确定分隔符"""
@@ -72,5 +72,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHaiCreateAutoFolder": "孤海自动新建文件夹"
+    "GuHaiCreateAutoFolder": "Goohai Auto Create Folder"
 }

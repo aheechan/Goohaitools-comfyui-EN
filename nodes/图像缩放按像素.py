@@ -29,7 +29,7 @@ class 孤海图像缩放按像素:
     RETURN_TYPES = ("IMAGE", "INT", "INT", "MASK", "MASK", "BOOLEAN")
     RETURN_NAMES = ("图像", "宽度", "高度", "遮罩", "扩展遮罩", "布尔")
     FUNCTION = "执行缩放"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 执行缩放(self, 图像, 缩放方法, 宽度, 高度, 将边缩放到, 缩放插值, 缩放模式, 执行条件, 启用填充色, 填充颜色, 自适应旋转, 整除数, 遮罩=None):
         img = tensor2pil(图像)
@@ -256,4 +256,4 @@ def pil2mask(image):
     return torch.from_numpy(np.array(image.convert("L")).astype(np.float32) / 255.0).unsqueeze(0)
 
 NODE_CLASS_MAPPINGS = {"孤海图像缩放按像素": 孤海图像缩放按像素}
-NODE_DISPLAY_NAME_MAPPINGS = {"孤海图像缩放按像素": "孤海图像缩放按像素"}
+NODE_DISPLAY_NAME_MAPPINGS = {"孤海图像缩放按像素": "Goohai Image Scale by Pixels"}

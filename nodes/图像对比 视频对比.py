@@ -378,8 +378,8 @@ class GHImageVideoComparer:
     RETURN_NAMES = ()
     FUNCTION = "compare"
     OUTPUT_NODE = True
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "在节点内以滑动、左右双拼或上下双拼方式对比图像/视频。"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Compares images or videos inside the node with a slider, side-by-side, or top/bottom split view."
 
     @classmethod
     def IS_CHANGED(cls, **kwargs):
@@ -413,5 +413,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GH_ImageVideoComparer": "图像对比 视频对比 GH",
+    "GH_ImageVideoComparer": "Image/Video Comparer GH",
 }

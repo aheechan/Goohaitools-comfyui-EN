@@ -15,8 +15,8 @@ class RotateImageNode:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("旋转后图像",)
     FUNCTION = "rotate_image"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "孤海-图像旋转节点"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Rotates an image by common angles."
 
     def rotate_image(self, image, 旋转角度):
         angle = int(旋转角度)
@@ -46,5 +46,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "RotateImageNode": "孤海-图像旋转"
+    "RotateImageNode": "Goohai Image Rotate"
 }

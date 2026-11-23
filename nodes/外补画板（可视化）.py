@@ -98,7 +98,7 @@ class 孤海外补画板可视化:
     RETURN_TYPES = ("IMAGE", "MASK", "BOOLEAN")
     RETURN_NAMES = ("图像", "遮罩", "外补是否存在")
     FUNCTION = "处理"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 处理(self, 图像, 单位, 左, 右, 上, 下, 最大输出长边, 整除数,
            遮罩=None, 外补颜色="#808080", gh_visual_ratio="自由比例", gh_visual_layout=""):
@@ -187,4 +187,4 @@ class 孤海外补画板可视化:
 
 
 NODE_CLASS_MAPPINGS = {"孤海外补画板可视化": 孤海外补画板可视化}
-NODE_DISPLAY_NAME_MAPPINGS = {"孤海外补画板可视化": "外补画板（可视化）"}
+NODE_DISPLAY_NAME_MAPPINGS = {"孤海外补画板可视化": "Outpaint Canvas (Visual)"}

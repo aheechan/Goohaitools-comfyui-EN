@@ -79,8 +79,8 @@ class AudioVideoMerger:
     RETURN_NAMES = ("视频",)
     FUNCTION = "merge"
     OUTPUT_NODE = True
-    CATEGORY = "GoohaiTools/视频"
-    DESCRIPTION = "将图像序列与音频合并为 H.264 MP4 视频（优化速度版）。"
+    CATEGORY = "GoohaiTools/Video"
+    DESCRIPTION = "Merges an image sequence and audio into an H.264 MP4 video (speed-optimized)."
 
     @staticmethod
     def _output_path():
@@ -323,6 +323,6 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GH_AudioVideoMerger": "保存视频",
+    "GH_AudioVideoMerger": "Save Video",
 }
 

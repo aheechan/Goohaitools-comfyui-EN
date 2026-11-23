@@ -21,7 +21,7 @@ class 孤海_图像差异到遮罩:
 
     RETURN_TYPES = ("MASK",)
     FUNCTION = "calculate_mask"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def calculate_mask(self, 图像1, 图像2, 阈值, 最小区域, 填充漏洞, 遮罩扩展, 遮罩羽化):
         # 转换张量为PIL图像
@@ -96,5 +96,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-图像差异到遮罩": "孤海-图像差异到遮罩"
+    "孤海-图像差异到遮罩": "Goohai Image Difference to Mask"
 }

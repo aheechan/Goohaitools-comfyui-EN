@@ -65,10 +65,10 @@ app.registerExtension({
             }
             this._ghAnyType = detected;
             const labelMap = {
-                IMAGE: "图像", MASK: "遮罩", AUDIO: "音频", VIDEO: "视频",
-                MODEL: "模型", CLIP: "CLIP", VAE: "VAE", STRING: "字符串",
-                CONDITIONING: "条件", LATENT: "Latent", INT: "整数", FLOAT: "浮点",
-                BOOLEAN: "布尔", ANY: "Any"
+                IMAGE: "Image", MASK: "Mask", AUDIO: "Audio", VIDEO: "Video",
+                MODEL: "Model", CLIP: "CLIP", VAE: "VAE", STRING: "String",
+                CONDITIONING: "Conditioning", LATENT: "Latent", INT: "Integer", FLOAT: "Float",
+                BOOLEAN: "Boolean", ANY: "Any"
             };
             const label = labelMap[detected] || detected;
             if (input) {

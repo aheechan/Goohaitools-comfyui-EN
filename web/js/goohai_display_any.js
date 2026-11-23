@@ -3,11 +3,11 @@ import { api } from "../../../scripts/api.js";
 import { installNativeNodePointerBridge } from "./goohai_dom_native_interaction.js";
 
 const NODE_TYPE = "GoohaiDisplayAny";
-const CONNECTION_MENU_LABEL = "展示任意 GH";
+const CONNECTION_MENU_LABEL = "Display Any GH";
 const LABELS = {
-    IMAGE: "图像", MASK: "遮罩", AUDIO: "音频", VIDEO: "视频", MODEL: "模型",
-    CLIP: "CLIP", VAE: "VAE", STRING: "字符串", TEXT: "文本", CONDITIONING: "条件",
-    LATENT: "Latent", INT: "整数", FLOAT: "浮点", BOOLEAN: "布尔", ANY: "Any",
+    IMAGE: "Image", MASK: "Mask", AUDIO: "Audio", VIDEO: "Video", MODEL: "Model",
+    CLIP: "CLIP", VAE: "VAE", STRING: "String", TEXT: "Text", CONDITIONING: "Conditioning",
+    LATENT: "Latent", INT: "Integer", FLOAT: "Float", BOOLEAN: "Boolean", ANY: "Any",
 };
 
 function addStyles() {
@@ -137,7 +137,7 @@ function showTextSettings(node) {
     panel.className = "gh-display-settings";
     const sizeLabel = document.createElement("label");
     sizeLabel.className = "gh-display-size-row";
-    sizeLabel.append("文本字号");
+    sizeLabel.append("Text size");
     const size = document.createElement("input");
     size.type = "number";
     size.min = "10";
@@ -159,7 +159,7 @@ function showTextSettings(node) {
     colorLabel.className = "gh-display-color-label";
     const colorPreview = document.createElement("span");
     colorPreview.className = "gh-display-color-preview";
-    colorLabel.append("文本颜色", colorPreview);
+    colorLabel.append("Text color", colorPreview);
     const color = document.createElement("input");
     color.type = "color";
     color.className = "gh-display-color-input";
@@ -241,7 +241,7 @@ function installConnectionMenuEntry(canvas) {
 
 async function blobFromMedia(src) {
     const response = await fetch(src, { credentials: "include" });
-    if (!response.ok) throw new Error(`加载失败: ${response.status}`);
+    if (!response.ok) throw new Error(`Load failed: ${response.status}`);
     return response.blob();
 }
 
@@ -271,7 +271,7 @@ async function copyMediaToClipboard(state) {
     try {
         if (kind === "video" || kind === "audio") {
             await navigator.clipboard.writeText(src);
-            state.flashContextItem?.(item, kind === "audio" ? "音频地址已复制" : "视频地址已复制");
+            state.flashContextItem?.(item, kind === "audio" ? "Audio URL copied" : "Video URL copied");
             return;
         }
         const blob = await blobFromMedia(src);
@@ -279,12 +279,12 @@ async function copyMediaToClipboard(state) {
             const type = blob.type || "image/png";
             await navigator.clipboard.write([new ClipboardItem({ [type]: blob })]);
         } else {
-            throw new Error("当前浏览器不支持剪贴板写入");
+            throw new Error("Clipboard write is not supported in this browser");
         }
-        state.flashContextItem?.(item, "已复制");
+        state.flashContextItem?.(item, "Copied");
     } catch (error) {
         console.warn("[GoohaiTools] 复制失败", error);
-        state.flashContextItem?.(item, "复制失败", true);
+        state.flashContextItem?.(item, "Copy failed", true);
     }
 }
 
@@ -306,10 +306,10 @@ async function saveMediaToDisk(state) {
         a.click();
         a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
-        state.flashContextItem?.(item, "已保存");
+        state.flashContextItem?.(item, "Saved");
     } catch (error) {
         console.warn("[GoohaiTools] 保存失败", error);
-        state.flashContextItem?.(item, "保存失败", true);
+        state.flashContextItem?.(item, "Save failed", true);
     }
 }
 
@@ -329,17 +329,17 @@ async function copyText(state) {
             field.select();
             const copied = document.execCommand("copy");
             field.remove();
-            if (!copied) throw new Error("复制未成功");
+            if (!copied) throw new Error("Copy did not succeed");
         }
         state.copy.textContent = "✓";
         state.copy.classList.add("gh-copy-done");
         clearTimeout(state.copyTimer);
         state.copyTimer = setTimeout(() => {
             state.copy.classList.remove("gh-copy-done");
-            state.copy.textContent = "复制";
+            state.copy.textContent = "Copy";
         }, 3000);
     } catch (error) {
-        state.copy.textContent = "复制";
+        state.copy.textContent = "Copy";
         console.warn("[GoohaiTools] 复制文本失败", error);
     }
 }
@@ -505,7 +505,7 @@ function renderPreview(node, payload) {
     state.text.classList.remove("gh-display-single");
     const hasMedia = ["images", "audio", "video"].some(key => payload?.[key]?.some(reference => reference?.filename));
     const isText = !hasMedia && ["STRING", "TEXT"].includes(payload?.type);
-    let batchTexts = Array.isArray(payload?.texts) && payload.texts.length ? payload.texts : [payload?.text ?? "等待执行…"];
+    let batchTexts = Array.isArray(payload?.texts) && payload.texts.length ? payload.texts : [payload?.text ?? "Waiting for execution…"];
     if (payload?.type === "BOOLEAN") {
         batchTexts = batchTexts.map(value => {
             const text = String(value).trim();
@@ -549,7 +549,7 @@ function renderPreview(node, payload) {
             if (tag === "img") {
                 element.loading = "eager";
                 element.style.visibility = "hidden";
-                element.alt = payload.type === "MASK" ? "遮罩预览" : "图像预览";
+                element.alt = payload.type === "MASK" ? "Mask preview" : "Image preview";
             } else {
                 element.controls = true;
                 element.preload = "metadata";
@@ -688,7 +688,7 @@ function createPreview(node) {
     const copy = document.createElement("button");
     copy.type = "button";
     copy.className = "gh-display-copy";
-    copy.textContent = "复制";
+    copy.textContent = "Copy";
     copy.title = "";
     toolbar.append(copy);
     const body = document.createElement("div");
@@ -701,11 +701,11 @@ function createPreview(node) {
     galleryClose.type = "button";
     galleryClose.className = "gh-display-gallery-button gh-display-gallery-close";
     galleryClose.textContent = "×";
-    galleryClose.title = "返回缩略图";
+    galleryClose.title = "Back to thumbnails";
     const galleryNext = document.createElement("button");
     galleryNext.type = "button";
     galleryNext.className = "gh-display-gallery-button gh-display-gallery-index";
-    galleryNext.title = "下一张（← / → 切换）";
+    galleryNext.title = "Next image (← / → to switch)";
     body.append(media, text, galleryClose, galleryNext);
     root.append(toolbar, body);
     const widget = node.addDOMWidget("gh_display_preview", "gh_display", root, {
@@ -761,7 +761,7 @@ function createPreview(node) {
     copy.addEventListener("pointerenter", () => {
         clearTimeout(state.copyTimer);
         copy.classList.remove("gh-copy-done");
-        copy.textContent = "复制";
+        copy.textContent = "Copy";
     });
     copy.addEventListener("pointerdown", (event) => {
         const selection = window.getSelection?.();
@@ -891,11 +891,11 @@ app.registerExtension({
         nodeType.prototype.getExtraMenuOptions = function (canvas, options) {
             const result = menu?.apply(this, arguments);
             const st = this._ghDisplay;
-            options.push(null, { content: "展示文本设置…", className: "gh-menu-text-settings", callback: () => showTextSettings(this) });
+            options.push(null, { content: "Text display settings…", className: "gh-menu-text-settings", callback: () => showTextSettings(this) });
             if (st?.contextMedia) {
                 const kind = mediaKindOf(st.contextMedia);
-                const copyLabel = kind === "image" ? "复制图像" : kind === "video" ? "复制视频地址" : "复制音频地址";
-                const saveLabel = kind === "image" ? "保存图像" : kind === "video" ? "保存视频" : "保存音频";
+                const copyLabel = kind === "image" ? "Copy image" : kind === "video" ? "Copy video URL" : "Copy audio URL";
+                const saveLabel = kind === "image" ? "Save image" : kind === "video" ? "Save video" : "Save audio";
                 options.push(
                     { content: copyLabel, callback: () => copyMediaToClipboard(st) },
                     { content: saveLabel, callback: () => saveMediaToDisk(st) },

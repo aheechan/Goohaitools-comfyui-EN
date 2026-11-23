@@ -33,7 +33,7 @@ class LoneSeaPresetSize:
     RETURN_TYPES = ("INT", "INT", "INT",)
     RETURN_NAMES = ("宽度", "高度", "分辨率",)
     FUNCTION = "calculate_size"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def calculate_size(self, 预设尺寸, dpi, 自定义宽度, 自定义高度, 单位):
         size_map = {
@@ -73,5 +73,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "LoneSeaPresetSize": "孤海预设尺寸"
+    "LoneSeaPresetSize": "Goohai Preset Size"
 }

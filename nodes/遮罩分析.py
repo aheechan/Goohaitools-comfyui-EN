@@ -18,7 +18,7 @@ class 孤海遮罩分析:
 
     RETURN_TYPES = ("MASK", "INT", "INT", "INT", "INT", "INT", "INT")
     RETURN_NAMES = ("遮罩", "画布宽", "画布高", "遮罩宽", "遮罩高", "遮罩中心x", "遮罩中心y")
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     FUNCTION = "analyze_mask"
 
     def analyze_mask(self, 遮罩, 上扩百分比, 下扩百分比, 左扩百分比, 右扩百分比):
@@ -130,4 +130,4 @@ class 孤海遮罩分析:
         )
 
 NODE_CLASS_MAPPINGS = {"孤海遮罩分析": 孤海遮罩分析}
-NODE_DISPLAY_NAME_MAPPINGS = {"孤海遮罩分析": "孤海-遮罩分析"}
+NODE_DISPLAY_NAME_MAPPINGS = {"孤海遮罩分析": "Goohai Mask Analysis"}

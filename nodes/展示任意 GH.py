@@ -172,9 +172,9 @@ class GoohaiDisplayAny:
     RETURN_TYPES = (ANY,)
     RETURN_NAMES = ("Any",)
     FUNCTION = "display"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     OUTPUT_NODE = True
-    DESCRIPTION = "展示并原样透传任意输入。有下游连接时按需执行，无下游连接时主动展示。"
+    DESCRIPTION = "Displays any input and passes it through unchanged. Runs on demand when a downstream node is connected, and displays actively when there is none."
 
     @classmethod
     def VALIDATE_INPUTS(cls, input_types):
@@ -211,7 +211,7 @@ class GoohaiDisplayAny:
 
 
 NODE_CLASS_MAPPINGS = {NODE_TYPE: GoohaiDisplayAny}
-NODE_DISPLAY_NAME_MAPPINGS = {NODE_TYPE: "展示任意 GH"}
+NODE_DISPLAY_NAME_MAPPINGS = {NODE_TYPE: "Display Any GH"}
 
 PromptServer.instance.add_on_prompt_handler(select_display_targets)
 

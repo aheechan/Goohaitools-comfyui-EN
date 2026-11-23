@@ -42,7 +42,7 @@ class 孤海_kontext生图比例:
     RETURN_TYPES = ("INT", "INT")
     RETURN_NAMES = ("宽度", "高度")
     FUNCTION = "calculate_size"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def calculate_size(self, 宽度, 高度, 选择尺寸):
         size_map = {
@@ -71,5 +71,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海_kontext生图比例": "孤海-kontext生图比例"
+    "孤海_kontext生图比例": "Goohai Kontext Aspect Ratio"
 }

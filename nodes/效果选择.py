@@ -26,7 +26,7 @@ class GH_EffectSwitcher:
     RETURN_TYPES = ("INT",)
     RETURN_NAMES = ("整数",)
     FUNCTION = "switch_effect"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def generate_14_15_seed(self):
         """生成14-15位的随机种子"""
@@ -106,4 +106,4 @@ class GH_EffectSwitcher:
 
 # 节点注册
 NODE_CLASS_MAPPINGS = {"GH_EffectSwitcher": GH_EffectSwitcher}
-NODE_DISPLAY_NAME_MAPPINGS = {"GH_EffectSwitcher": "孤海-效果切换"}
+NODE_DISPLAY_NAME_MAPPINGS = {"GH_EffectSwitcher": "Goohai Effect Switcher"}

@@ -51,7 +51,7 @@ function createCheckmark() {
 
 function createSelectedBadge() {
     const el = document.createElement("div");
-    el.textContent = "已选";
+    el.textContent = "Selected";
     Object.assign(el.style, {
         position: "absolute", top: "4px", left: "4px",
         padding: "2px 6px",
@@ -223,7 +223,7 @@ app.registerExtension({
 
                 list.push(sel
                     ? { _kind: "first_preview", ...sel, _isSel: false, _isFirst: true }
-                    : { _kind: "none", title: "无", prompt: "", _isSel: false, _isFirst: true }
+                    : { _kind: "none", title: "None", prompt: "", _isSel: false, _isFirst: true }
                 );
 
                 for (const tpl of pool) {
@@ -297,7 +297,7 @@ app.registerExtension({
 
             // ---- 提示词文本框 ----
             const promptArea = document.createElement("textarea");
-            promptArea.placeholder = "服装/发型提示词：选择模板后自动填入，也可随时手动编辑...";
+            promptArea.placeholder = "Outfit/hairstyle prompt: filled automatically after selecting a template; you can also edit it anytime...";
             Object.assign(promptArea.style, {
                 width: "100%",
                 height: `${PROMPT_TEXTAREA_H}px`,
@@ -363,7 +363,7 @@ app.registerExtension({
 
             const searchInput = document.createElement("input");
             searchInput.type = "text";
-            searchInput.placeholder = "搜索模板（多个关键词用任意符号隔开，如：西装 领带 男...）";
+            searchInput.placeholder = "Search templates (separate keywords with any symbol, e.g. suit tie male...)";
             Object.assign(searchInput.style, {
                 width: "100%",
                 padding: "5px 26px 5px 28px",
@@ -465,7 +465,7 @@ app.registerExtension({
                         background: "#2d2d2d", color: "#888", fontSize: "16px",
                         borderRadius: innerRadius,
                     });
-                    placeholder.textContent = "无";
+                    placeholder.textContent = "None";
                     previewBox.appendChild(placeholder);
                     previewBox.appendChild(createSelectedBadge());
                 } else {
@@ -580,7 +580,7 @@ app.registerExtension({
                         gridColumn: "1 / -1", textAlign: "center",
                         color: "#666", padding: "16px", fontSize: "12px",
                     });
-                    noResult.textContent = "未找到匹配的模板";
+                    noResult.textContent = "No matching templates found";
                     gallery.appendChild(noResult);
                 }
             }

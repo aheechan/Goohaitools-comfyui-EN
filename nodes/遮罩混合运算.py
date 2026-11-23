@@ -20,7 +20,7 @@ class MaskBlendOperation:
     RETURN_TYPES = ("MASK", "INT", "INT")
     RETURN_NAMES = ("遮罩", "遮罩宽", "遮罩高")
     FUNCTION = "execute"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def execute(self, 混合模式, BBOX, 对齐方式, 遮罩1=None, 遮罩2=None):
         # 处理空遮罩情况
@@ -218,5 +218,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-遮罩混合运算": "孤海-遮罩混合运算"
+    "孤海-遮罩混合运算": "Goohai Mask Blend Operations"
 }

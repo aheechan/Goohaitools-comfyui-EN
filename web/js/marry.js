@@ -115,7 +115,7 @@ function _initGallery(node) {
         fontWeight: "bold",
         zIndex: "10",
     });
-    selectedLabel.textContent = "已选";
+    selectedLabel.textContent = "Selected";
     pvBox.appendChild(selectedLabel);
 
     // 添加“无”文字显示
@@ -130,7 +130,7 @@ function _initGallery(node) {
         zIndex: "5",
         display: "none", // 默认隐藏
     });
-    noImageLabel.textContent = "无";
+    noImageLabel.textContent = "None";
     pvBox.appendChild(noImageLabel);
 
     pvRow.appendChild(pvBox);
@@ -234,7 +234,7 @@ function _initGallery(node) {
                 padding: "40px 0",
                 fontSize: "14px",
             });
-            msg.textContent = "暂无服装图片，请将图片放入 marriage registration 文件夹";
+            msg.textContent = "No outfit images yet. Put images into the marriage registration folder";
             grid.appendChild(msg);
             return;
         }

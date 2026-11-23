@@ -59,7 +59,7 @@ app.registerExtension({
         nodeType.prototype.getExtraMenuOptions = function (canvas, options) {
             if (origGetExtra) origGetExtra.apply(this, arguments);
             options.unshift({
-                content: "🎮  忽略多组_孤海 设置",
+                content: "🎮  Ignore Groups Settings",
                 callback: () => {
                     if (this._guhaiShowSettings) {
                         this._guhaiShowSettings(
@@ -594,7 +594,7 @@ function buildIgnoreGroupsUI(node) {
         const gear = document.createElement("div");
         gear.className = "guhai-ig-gear";
         gear.innerHTML = gearSVG;
-        gear.title = "设置";
+        gear.title = "Settings";
         gear.addEventListener("mousedown", (e) => {
             e.preventDefault(); e.stopPropagation();
             showSettings(e.clientX, e.clientY);
@@ -607,7 +607,7 @@ function buildIgnoreGroupsUI(node) {
         if (!list.length) {
             const empty = document.createElement("div");
             empty.className = "guhai-ig-empty";
-            empty.textContent = filter.trim() ? "无匹配的组" : "工作流中无编组或空的编组";
+            empty.textContent = filter.trim() ? "No matching groups" : "No groups in this workflow";
             rootEl.appendChild(empty);
         } else {
             const h = calcHeight();
@@ -841,7 +841,7 @@ function buildIgnoreGroupsUI(node) {
         }
 
         const titleEl = document.createElement("div");
-        titleEl.textContent = "🎮  忽略多组_孤海 设置";
+        titleEl.textContent = "🎮  Ignore Groups Settings";
         Object.assign(titleEl.style, {
             fontSize: "15px", fontWeight: "bold", marginBottom: "14px",
             color: "var(--input-text)", borderBottom: "1px solid var(--border-color)", paddingBottom: "8px",
@@ -849,7 +849,7 @@ function buildIgnoreGroupsUI(node) {
         pop.appendChild(titleEl);
 
         const dLabel = document.createElement("div");
-        dLabel.textContent = "路由控制";
+        dLabel.textContent = "Routing";
         Object.assign(dLabel.style, { fontSize: "13px", fontWeight: "bold", marginBottom: "6px" });
         pop.appendChild(dLabel);
 
@@ -861,26 +861,26 @@ function buildIgnoreGroupsUI(node) {
         dRadioBypass.value = "bypass"; dRadioBypass.checked = !igDisable; dRadioBypass.style.cursor = "pointer";
         const dLblBypass = document.createElement("label");
         dLblBypass.style.cursor = "pointer"; dLblBypass.style.fontSize = "13px";
-        dLblBypass.appendChild(dRadioBypass); dLblBypass.appendChild(document.createTextNode(" 绕过（ctrl+b）"));
+        dLblBypass.appendChild(dRadioBypass); dLblBypass.appendChild(document.createTextNode(" Bypass (ctrl+b)"));
 
         const dRadioDisable = document.createElement("input");
         dRadioDisable.type = "radio"; dRadioDisable.name = "guhai_ig_close_mode";
         dRadioDisable.value = "disable"; dRadioDisable.checked = !!igDisable; dRadioDisable.style.cursor = "pointer";
         const dLblDisable = document.createElement("label");
         dLblDisable.style.cursor = "pointer"; dLblDisable.style.fontSize = "13px";
-        dLblDisable.appendChild(dRadioDisable); dLblDisable.appendChild(document.createTextNode(" 禁用（ctrl+m）"));
+        dLblDisable.appendChild(dRadioDisable); dLblDisable.appendChild(document.createTextNode(" Disable (ctrl+m)"));
 
         dRow.appendChild(dLblBypass); dRow.appendChild(dLblDisable); pop.appendChild(dRow);
         dRadioBypass.addEventListener("change", applyAll);
         dRadioDisable.addEventListener("change", applyAll);
 
         const fLabel = document.createElement("div");
-        fLabel.textContent = "关键词筛选";
+        fLabel.textContent = "Keyword Filter";
         Object.assign(fLabel.style, { fontSize: "13px", fontWeight: "bold", marginBottom: "4px" });
         pop.appendChild(fLabel);
 
         const fInput = document.createElement("input");
-        fInput.type = "text"; fInput.value = filter; fInput.placeholder = "留空 = 显示所有组";
+        fInput.type = "text"; fInput.value = filter; fInput.placeholder = "Leave empty to show all groups";
         Object.assign(fInput.style, {
             width: "100%", padding: "5px 8px", fontSize: "13px",
             background: "var(--comfy-input-bg)", border: "1px solid var(--border-color)", borderRadius: "4px",
@@ -894,7 +894,7 @@ function buildIgnoreGroupsUI(node) {
         });
 
         const cLabel = document.createElement("div");
-        cLabel.textContent = "颜色筛选";
+        cLabel.textContent = "Color Filter";
         Object.assign(cLabel.style, { fontSize: "13px", fontWeight: "bold", marginBottom: "4px" });
         pop.appendChild(cLabel);
 
@@ -924,10 +924,10 @@ function buildIgnoreGroupsUI(node) {
 
         function updateColorPreview() {
             if (cFilter === "none") {
-                cdColorRect.style.display = "none"; cdColorText.textContent = "无";
+                cdColorRect.style.display = "none"; cdColorText.textContent = "None";
             } else if (cFilter === "__transparent__") {
                 cdColorRect.style.display = "inline-block"; cdColorRect.style.background = "transparent";
-                cdColorText.textContent = "透明色";
+                cdColorText.textContent = "Transparent";
             } else {
                 cdColorRect.style.display = "inline-block"; cdColorRect.style.background = cFilter;
                 cdColorText.textContent = cFilter.toUpperCase();
@@ -976,9 +976,9 @@ function buildIgnoreGroupsUI(node) {
                 });
                 return item;
             }
-            cdPanel.appendChild(makeColorItem("#2a2a2a", "无", "none", false, true));
+            cdPanel.appendChild(makeColorItem("#2a2a2a", "None", "none", false, true));
             colors.forEach(c => {
-                if (c === "__transparent__") { cdPanel.appendChild(makeColorItem("#2A2A2A", "透明色", "__transparent__", true, false)); }
+                if (c === "__transparent__") { cdPanel.appendChild(makeColorItem("#2A2A2A", "Transparent", "__transparent__", true, false)); }
                 else { cdPanel.appendChild(makeColorItem(c, c.toUpperCase(), c, false, false)); }
             });
             cdContainer.appendChild(cdPanel);
@@ -995,7 +995,7 @@ function buildIgnoreGroupsUI(node) {
         document.addEventListener("mousedown", closeColorPanel);
 
         const mLabel = document.createElement("div");
-        mLabel.textContent = "切换模式";
+        mLabel.textContent = "Switch Mode";
         Object.assign(mLabel.style, { fontSize: "13px", fontWeight: "bold", marginBottom: "4px" });
         pop.appendChild(mLabel);
 
@@ -1005,14 +1005,14 @@ function buildIgnoreGroupsUI(node) {
             background: "var(--comfy-input-bg)", border: "1px solid var(--border-color)", borderRadius: "4px",
             color: "var(--input-text)", outline: "none", boxSizing: "border-box", marginBottom: "14px",
         });
-        [["default","默认"],["always_one","始终开启1个"],["at_most_one","最多开启1个"]].forEach(([val, txt]) => {
+        [["default","Default"],["always_one","Always On (1)"],["at_most_one","At Most One"]].forEach(([val, txt]) => {
             const opt = document.createElement("option"); opt.value = val; opt.textContent = txt; mSelect.appendChild(opt);
         });
         mSelect.value = mode; pop.appendChild(mSelect);
         mSelect.addEventListener("change", applyAll);
 
         const sLabel = document.createElement("div");
-        sLabel.textContent = "排序";
+        sLabel.textContent = "Sort";
         Object.assign(sLabel.style, { fontSize: "13px", fontWeight: "bold", marginBottom: "4px" });
         pop.appendChild(sLabel);
 
@@ -1022,14 +1022,14 @@ function buildIgnoreGroupsUI(node) {
             background: "var(--comfy-input-bg)", border: "1px solid var(--border-color)", borderRadius: "4px",
             color: "var(--input-text)", outline: "none", boxSizing: "border-box", marginBottom: "14px",
         });
-        [["position","按位置"],["alphabet","按首字母"]].forEach(([val, txt]) => {
+        [["position","By Position"],["alphabet","Alphabetical"]].forEach(([val, txt]) => {
             const opt = document.createElement("option"); opt.value = val; opt.textContent = txt; sSelect.appendChild(opt);
         });
         sSelect.value = sortOrder; pop.appendChild(sSelect);
         sSelect.addEventListener("change", applyAll);
 
         const scaleLabel = document.createElement("div");
-        scaleLabel.textContent = "UI组件大小";
+        scaleLabel.textContent = "UI Size";
         Object.assign(scaleLabel.style, { fontSize: "13px", fontWeight: "bold", marginBottom: "4px" });
         pop.appendChild(scaleLabel);
 
@@ -1059,14 +1059,14 @@ function buildIgnoreGroupsUI(node) {
         });
 
         const tcLabel = document.createElement("div");
-        tcLabel.textContent = "主题颜色";
+        tcLabel.textContent = "Theme Color";
         Object.assign(tcLabel.style, {
             display: "flex", alignItems: "center", gap: "12px",
             fontSize: "13px", fontWeight: "bold", marginBottom: "4px",
         });
         const themeDark = document.createElement("input");
         const themeLight = document.createElement("input");
-        [[themeDark, "dark", "深色"], [themeLight, "light", "浅色"]].forEach(([radio, value, text]) => {
+        [[themeDark, "dark", "Dark"], [themeLight, "light", "Light"]].forEach(([radio, value, text]) => {
             radio.type = "radio";
             radio.name = _uid + "_theme_mode";
             radio.value = value;

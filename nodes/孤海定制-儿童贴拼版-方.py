@@ -25,7 +25,7 @@ class ChildPhotoLayoutNode:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "layout_images"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
 
     def cm_to_px(self, cm):
         return int(cm * self.dpi / 2.54 + 0.5)
@@ -240,5 +240,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ChildPhotoLayoutNode": "孤海定制-儿童贴拼版-方"
+    "ChildPhotoLayoutNode": "Goohai Custom Kids Sticker Layout - Square"
 }

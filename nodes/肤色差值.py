@@ -25,8 +25,8 @@ class GhostSeaSkinColorDifference:
     RETURN_TYPES = ("FLOAT", "BOOLEAN",)
     RETURN_NAMES = ("颜色差值", "S布尔值",)
     FUNCTION = "calculate_difference"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "比较两张图像的颜色差异，输出饱和度布尔开关"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Compares color differences between two images and outputs a saturation boolean."
 
     def calculate_difference(self, 图像1, 图像2, 颜色阈值, 遮罩1=None, 遮罩2=None):
         # 确保图像在CPU上处理
@@ -131,5 +131,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-肤色差值": "孤海-肤色差值"
+    "孤海-肤色差值": "Goohai Skin Tone Difference"
 }

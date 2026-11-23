@@ -52,7 +52,7 @@ def auto_crop_image(image):
     return img.crop((left, top, right+1, bottom+1))
 
 class GuHaiAutoImageSplit:
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("分割图像",)
     FUNCTION = "split_image"
@@ -168,5 +168,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHaiAutoImageSplit": "孤海自动分割图像"
+    "GuHaiAutoImageSplit": "Goohai Auto Split Image"
 }

@@ -28,7 +28,7 @@ class ImageSaveNode:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("图像输出",)
     FUNCTION = "save_image"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def get_next_sequence(self, path, prefix, delimiter, num_digits, img_format):
         pattern = re.compile(
@@ -131,5 +131,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ImageSaveNode_孤海": "孤海-图像保存"
+    "ImageSaveNode_孤海": "Goohai Image Save"
 }

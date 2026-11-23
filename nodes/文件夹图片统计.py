@@ -22,7 +22,7 @@ class LoneSeaImageCounter:
     RETURN_TYPES = ("INT",)
     RETURN_NAMES = ("图片数量",)
     FUNCTION = "count_images"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def count_images(self, folder_path, include_subdirs, seed):
         # 随机种子不参与实际计算，仅用于触发刷新
@@ -51,5 +51,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "LoneSeaImageCounter": "📁孤海文件夹图片统计"
+    "LoneSeaImageCounter": "📁Goohai Folder Image Count"
 }

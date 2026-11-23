@@ -106,7 +106,7 @@ class IDPhotoClothingSelector_孤海:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("提示词",)
     FUNCTION = "execute"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def execute(self, 风格类型, 提示词输出="", unique_id=None):
         return (提示词输出,)
@@ -168,5 +168,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "IDPhotoClothingSelector_孤海": "证件照服装发型_孤海",
+    "IDPhotoClothingSelector_孤海": "ID Photo Outfit & Hairstyle Goohai",
 }

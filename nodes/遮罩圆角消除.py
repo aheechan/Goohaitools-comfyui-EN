@@ -19,8 +19,8 @@ class MaskCornerFixer:
     
     RETURN_TYPES = ("MASK",)
     FUNCTION = "fix_mask_corners"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "消除遮罩圆角，保持四条边不变并还原折角"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Removes rounded mask corners, keeping the four edges intact and restoring the corners."
 
     def fix_mask_corners(self, mask, trim_percent=0.15):
         # 确保只处理批次中的第一张
@@ -176,5 +176,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MaskCornerFixer": "孤海-遮罩圆角消除"
+    "MaskCornerFixer": "Goohai Mask Corner Rounding Fix"
 }

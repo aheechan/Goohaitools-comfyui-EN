@@ -120,7 +120,7 @@ async function loaderFor(node) {
     if (!info?.selection) return info?.url || null;
     const response = await api.fetchApi(`/ghil/selection?${info.selection}`);
     const selected = await response.json();
-    if (!response.ok) throw new Error(selected.error || "读取图库图像失败");
+    if (!response.ok) throw new Error(selected.error || "Failed to read gallery image");
     if (selected.url) return api.apiURL(selected.url);
     // Uploaded gallery images use the regular ComfyUI input image store.
     let raw = info.widget.value.replaceAll("\\", "/");
@@ -135,7 +135,7 @@ async function loadUpstreamPreview(node, receive, setStatus, signal) {
     signal.throwIfAborted();
     const imageInput = output[String(node.id)]?.inputs?.["图像"];
     if (!Array.isArray(imageInput) || imageInput.length !== 2 || !output[String(imageInput[0])]) {
-        throw new Error("请先连接有效的上游图像输出");
+        throw new Error("Connect a valid upstream image output first");
     }
     // Build a separate prompt containing only the selected image's ancestors.
     // Neither this outpaint node nor any of its downstream branches is submitted.
@@ -144,7 +144,7 @@ async function loadUpstreamPreview(node, receive, setStatus, signal) {
         id = String(id);
         if (prompt[id]) return;
         const entry = output[id];
-        if (!entry) throw new Error(`找不到上游节点 ${id}`);
+        if (!entry) throw new Error(`Upstream node ${id} not found`);
         prompt[id] = entry;
         for (const value of Object.values(entry.inputs || {})) {
             if (Array.isArray(value) && value.length === 2 && typeof value[0] === "string" && Number.isInteger(value[1]) && output[value[0]]) include(value[0]);
@@ -179,16 +179,16 @@ async function loadUpstreamPreview(node, receive, setStatus, signal) {
         // A single history read also covers cached preview outputs; no polling.
         try {
             const response = await api.fetchApi(`/history/${encodeURIComponent(promptId)}`, { signal });
-            if (!response.ok) throw new Error("读取上游预览结果失败");
+            if (!response.ok) throw new Error("Failed to read upstream preview result");
             const history = await response.json();
             const images = history[promptId]?.outputs?.[target]?.images;
-            if (!images?.length) throw new Error("上游没有返回可预览图像");
+            if (!images?.length) throw new Error("Upstream returned no previewable image");
             await deliver(images);
         } catch (error) { cleanup(); if (!signal.aborted) setStatus(error.message); }
     });
     for (const type of ["execution_error", "execution_interrupted"]) listen(type, (event) => {
         if (event.detail?.prompt_id !== promptId) return;
-        cleanup(); setStatus(event.detail?.exception_message || "上游执行已中断");
+        cleanup(); setStatus(event.detail?.exception_message || "Upstream execution was interrupted");
     });
     try {
         const response = await api.fetchApi("/prompt", {
@@ -196,7 +196,7 @@ async function loadUpstreamPreview(node, receive, setStatus, signal) {
             body: JSON.stringify({ prompt, client_id: api.clientId, partial_execution_targets: [target] }),
         });
         const result = await response.json();
-        if (!response.ok || result.error) throw new Error(result.error?.message || "上游预览任务提交失败");
+        if (!response.ok || result.error) throw new Error(result.error?.message || "Failed to submit upstream preview task");
         promptId = result.prompt_id;
     } catch (error) { cleanup(); throw error; }
     return cleanup;
@@ -224,11 +224,11 @@ function createPreview(node) {
     root.style.cssText = "width:100%;height:100%;min-height:0;box-sizing:border-box;color:#ddd;font:12px sans-serif;user-select:none;display:flex;flex-direction:column;";
     const bar = document.createElement("div");
     bar.style.cssText = "display:flex;flex:0 0 auto;gap:6px;align-items:center;padding:4px 0;";
-    const load = document.createElement("button"); load.textContent = "加载"; load.type = "button";
-    const reset = document.createElement("button"); reset.textContent = "复位"; reset.type = "button";
+    const load = document.createElement("button"); load.textContent = "Load"; load.type = "button";
+    const reset = document.createElement("button"); reset.textContent = "Reset"; reset.type = "button";
     const ratio = document.createElement("select");
-    ratio.title = "扩展后图像比例";
-    ratio.setAttribute("aria-label", "扩展后图像比例");
+    ratio.title = "Output image ratio";
+    ratio.setAttribute("aria-label", "Output image ratio");
     for (const label of RATIOS) { const option = document.createElement("option"); option.value = label; option.textContent = label; ratio.append(option); }
     ratio.style.cssText = "max-width:100px;background:#30343c;color:#ddd;border:1px solid #59616d;border-radius:3px;padding:3px;";
     for (const button of [load, reset]) {
@@ -484,7 +484,7 @@ function createPreview(node) {
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";
         const values = current(); const img = state.image;
-        if (!img) { state.layout = null; ctx.fillStyle = "#9aa4af"; ctx.textAlign = "center"; ctx.fillText("连接加载图像节点后自动显示，或点击“加载”", rect.width / 2, rect.height / 2); info.textContent = "未加载图像"; return; }
+        if (!img) { state.layout = null; ctx.fillStyle = "#9aa4af"; ctx.textAlign = "center"; ctx.fillText("Connect a Load Image node to preview automatically, or click “Load”", rect.width / 2, rect.height / 2); info.textContent = "No image loaded"; return; }
         const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
         const v = outputGeometry(iw, ih, values);
         const { totalW, totalH } = v;
@@ -879,7 +879,7 @@ function createPreview(node) {
                 await setImage(null); return;
             }
         } catch (error) { if (!state.disposed) info.textContent = error.message; return; }
-        load.disabled = true; info.textContent = "正在加载上游图像…";
+        load.disabled = true; info.textContent = "Loading upstream image…";
         state.cancelPreview?.();
         const controller = new AbortController();
         state.previewController?.abort();
@@ -913,7 +913,7 @@ function createPreview(node) {
                 }
                 resolve();
             };
-            img.onerror = () => { finish(); reject(new Error("图像预览加载失败")); };
+            img.onerror = () => { finish(); reject(new Error("Failed to load image preview")); };
             img.src = src;
         });
     }

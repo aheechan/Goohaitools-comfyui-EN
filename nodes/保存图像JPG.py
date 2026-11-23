@@ -27,20 +27,9 @@ class SaveImageJPG_GH:
     RETURN_TYPES = ()
     RETURN_NAMES = ()
     FUNCTION = "保存_jpg"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     OUTPUT_NODE = True
-    DESCRIPTION = """保持图像画质不变，保存为体积非常小的JPG格式  
-   
-自定义文件名变量：  
-① %date:yyyymmdd% - 年月日；%time:hhmmss% - 时分秒  
-② %INDEX% - 当前图片序号   
-③ %BATCH_SIZE% - 批次大小  
-④ %BATCH_INDEX% - 批次内序号   
-举例：  
- %date:yyyy年M月dd日%/测试_%time:hhmmss% → 在output下自动新建"2026年1月20日"文件夹，并保存为：测试_143022.jpg  
- %date:YYmmdd%/%date:mmdd%-%time:hhmmss% → 在output下新建"260120"文件夹，并保存为：0120-143022.jpg  
- （支持绝对路径）D:\桌面\批量输出\高清_%time:h时m分s秒% → D:\桌面\批量输出\高清_8时12分56秒.jpg
-"""
+    DESCRIPTION = "Keeps the image quality unchanged while saving a very small JPG file.\n\nCustom filename variables:\n1. %date:yyyymmdd% - date; %time:hhmmss% - time of day\n2. %INDEX% - current image index\n3. %BATCH_SIZE% - batch size\n4. %BATCH_INDEX% - index within the batch\nExamples:\n %date:yyyymmdd%/test_%time:hhmmss% -> creates folder 20260120 under output and saves test_143022.jpg\n %date:YYmmdd%/%date:mmdd%-%time:hhmmss% -> creates folder 260120 under output and saves 0120-143022.jpg\n (absolute paths supported) D:\\desktop\\batch_out\\hd_%time:hhmmss% -> D:\\desktop\\batch_out\\hd_141256.jpg"
     
     def 保存_jpg(cls, 图像, 文件名前缀):
         """
@@ -366,5 +355,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "SaveImageJPG_GH": "保存图像JPG 孤海"
+    "SaveImageJPG_GH": "Save Image JPG Goohai"
 }

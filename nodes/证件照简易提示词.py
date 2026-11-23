@@ -24,7 +24,7 @@ class SimpleIDPhotoPrompts:
 
     RETURN_TYPES = ("STRING",)
     FUNCTION = "generate_prompt"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def generate_prompt(self, **kwargs):
         # 设置随机种子
@@ -91,5 +91,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "SimpleIDPhotoPrompts": "孤海-证件照简易提示词"
+    "SimpleIDPhotoPrompts": "Goohai ID Photo Simple Prompt"
 }

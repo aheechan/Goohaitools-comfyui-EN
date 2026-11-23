@@ -45,7 +45,7 @@ class GulfSeaImageMergeMask:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("图像",)
     FUNCTION = "merge_images"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def tensor_to_pil(self, tensor):
         """将张量转换为PIL图像"""
@@ -210,5 +210,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GulfSeaImageMergeMask": "孤海-图像合并（遮罩）"
+    "GulfSeaImageMergeMask": "Goohai Image Merge (Mask)"
 }

@@ -83,7 +83,7 @@ class SingleImageLayoutNode:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("排版图像",)
     FUNCTION = "layout_image"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def layout_image(self, image, 相纸宽, 相纸高, 分辨率, 文件名, 照片间距, 字体, 字体大小, 描边, 安全边距, 自动切换横竖版):
         # 将输入图像转换为PIL图像
@@ -257,5 +257,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "SingleImageLayoutNode": "孤海-单尺寸排版"
+    "SingleImageLayoutNode": "Goohai Single-size Layout"
 }

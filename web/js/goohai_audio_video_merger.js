@@ -686,7 +686,7 @@ function createWidget(node, reference) {
         const mute = document.createElement("button");
         mute.type = "button";
         mute.className = "gh-avm-mute";
-        mute.title = "静音/取消静音";
+        mute.title = "Mute / Unmute";
         mute.textContent = "🔊";
         mute.style.display = "none";
 

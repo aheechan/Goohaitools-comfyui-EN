@@ -24,8 +24,8 @@ class 孤海_图像嵌入:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("图像",)
     FUNCTION = "process_image"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "将嵌入图像按照遮罩区域嵌入到背景图中"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Embeds the overlay image into the background according to the mask region."
 
     def process_image(self, 背景图, 嵌入图, 嵌入遮罩, 嵌入方式, 嵌入到, 输出通道):
         # 标准化输入张量形状
@@ -437,5 +437,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-图像嵌入": "孤海-图像嵌入"
+    "孤海-图像嵌入": "Goohai Image Embed"
 }

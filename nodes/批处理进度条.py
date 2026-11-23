@@ -39,7 +39,7 @@ class GuhaiBatchProgress:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "generate_progress"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def generate_progress(self, total, current, background_color, progress_color, text_color, font_size, font_name):
         # 创建画布
@@ -103,5 +103,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuhaiBatchProgress_孤海批处理进度条": "孤海批处理进度条 🐋"
+    "GuhaiBatchProgress_孤海批处理进度条": "Goohai Batch Progress 🐋"
 }

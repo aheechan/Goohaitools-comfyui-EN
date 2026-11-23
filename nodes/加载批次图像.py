@@ -67,7 +67,7 @@ class 孤海加载批次图像:
     RETURN_TYPES = ("IMAGE", "STRING", "STRING", "STRING", "STRING", "INT", "INT")
     RETURN_NAMES = ("图像", "文件名", "图像路径", "扩展名", "路径+文件名", "序号", "图像总数")
     FUNCTION = "加载图片"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 加载图片(self, 文件夹路径, 起始索引, 加载模式, 保留透明通道, 包含子文件夹, 显示扩展名, 自定义扩展名, 重置递增, seed, 图像筛选):
         # 随机种子不参与实际计算，仅用于触发刷新（来自第一个代码）
@@ -171,4 +171,4 @@ class 孤海加载批次图像:
             return 所有支持后缀
 
 NODE_CLASS_MAPPINGS = {"GuHai_ImageLoaderPro": 孤海加载批次图像}
-NODE_DISPLAY_NAME_MAPPINGS = {"GuHai_ImageLoaderPro": "孤海-加载批次图像"}
+NODE_DISPLAY_NAME_MAPPINGS = {"GuHai_ImageLoaderPro": "Goohai Load Batch Images"}

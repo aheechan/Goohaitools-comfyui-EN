@@ -135,7 +135,7 @@ class MathExpressionNode:
     RETURN_TYPES = ("INT", "FLOAT", "INT", "FLOAT", "STRING")
     RETURN_NAMES = ("整数1", "浮点1", "整数2", "浮点2", "？帮助")
     FUNCTION = "calculate"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     OUTPUT_NODE = False
 
     @staticmethod
@@ -277,5 +277,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "数学运算_孤海": "数学运算 孤海"
+    "数学运算_孤海": "Math Operations Goohai"
 }

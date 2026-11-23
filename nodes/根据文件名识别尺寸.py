@@ -22,7 +22,7 @@ class 孤海根据文件名识别尺寸:
     RETURN_TYPES = ("FLOAT", "FLOAT", "STRING", "FLOAT", "FLOAT")
     RETURN_NAMES = ("宽度", "高度", "尺寸名", "画布宽", "画布高")
     FUNCTION = "处理"
-    CATEGORY = "孤海定制"
+    CATEGORY = "Goohai Custom"
 
     def 处理(self, 文件名, 尺寸定义, 单位, 分辨率):
         # 预处理文件名：将中文数字尺寸转换为阿拉伯数字格式
@@ -98,5 +98,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海根据文件名识别尺寸": "孤海-根据文件名识别尺寸"
+    "孤海根据文件名识别尺寸": "Goohai Size from Filename"
 }

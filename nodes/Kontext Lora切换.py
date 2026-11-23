@@ -108,7 +108,7 @@ class KontextLoraSwitch:
     RETURN_TYPES = ("STRING", "STRING")
     RETURN_NAMES = ("lora", "prompt")
     FUNCTION = "switch"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def switch(self, 功能切换):
         """根据选择输出对应的lora和prompt"""
@@ -129,5 +129,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "KontextLoraSwitch": "孤海-Kontext_lora切换"
+    "KontextLoraSwitch": "Goohai Kontext LoRA Switch"
 }

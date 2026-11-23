@@ -21,7 +21,7 @@ class 孤海遮罩模糊生长按比例:
     RETURN_TYPES = ("MASK", "MASK")
     RETURN_NAMES = ("遮罩", "反转遮罩")
     FUNCTION = "处理"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 处理(self, 遮罩, 生长百分比, 模糊百分比, 填充孔洞, 圆角模式):
         # 转换张量为numpy数组
@@ -68,4 +68,4 @@ class 孤海遮罩模糊生长按比例:
         return (结果遮罩, 1.0 - 结果遮罩)
 
 NODE_CLASS_MAPPINGS = {"GH_MaskGrowthBlur": 孤海遮罩模糊生长按比例}
-NODE_DISPLAY_NAME_MAPPINGS = {"GH_MaskGrowthBlur": "孤海遮罩模糊生长按比例"}
+NODE_DISPLAY_NAME_MAPPINGS = {"GH_MaskGrowthBlur": "Goohai Mask Blur & Grow by Ratio"}

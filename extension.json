@@ -1,8 +1,8 @@
 {
-  "title": "Goohaitools-comfyui",
-  "description": "孤海ComfyUI自定义节点合集，批处理实用工具箱。",
-  "author": "goohai",
-  "tags": ["孤海", "tool", "utility", "image-processing", "face-detection"],
+  "title": "Goohai Tools (English)",
+  "description": "English fork of the Goohai ComfyUI custom node collection: 70+ batch, image, mask, ID-photo and layout utilities.",
+  "author": "goohai (original), aheechan (English fork)",
+  "tags": ["goohai", "tool", "utility", "image-processing", "face-detection", "english"],
   "install_mode": "copy",
   "files": [
     {
@@ -16,6 +16,10 @@
     {
       "src": "web/",
       "dst": "custom_nodes/Goohaitools-comfyui/web/"
+    },
+    {
+      "src": "locales/",
+      "dst": "custom_nodes/Goohaitools-comfyui/locales/"
     },
     {
       "src": "requirements.txt",

@@ -290,7 +290,7 @@ class QwenImagePromptOptimizer:
     RETURN_TYPES = ("STRING", "STRING", "BOOLEAN")
     RETURN_NAMES = ("prompt", "json", "是否反推")
     FUNCTION = "optimize"
-    CATEGORY = "孤海工具箱/提示词"
+    CATEGORY = "Goohai Tools/Prompt"
 
     @classmethod
     def IS_CHANGED(cls, 种子值=0, **kwargs):
@@ -393,4 +393,4 @@ class QwenImagePromptOptimizer:
 
 
 NODE_CLASS_MAPPINGS = {"QwenImagePromptOptimizer": QwenImagePromptOptimizer}
-NODE_DISPLAY_NAME_MAPPINGS = {"QwenImagePromptOptimizer": "Qwen image 2.1 提示词优化"}
+NODE_DISPLAY_NAME_MAPPINGS = {"QwenImagePromptOptimizer": "Qwen Image 2.1 Prompt Optimizer"}

@@ -19,7 +19,7 @@ class GuHaiMaskCrop:
     RETURN_TYPES = ("IMAGE", "MASK", "BOOLEAN")
     RETURN_NAMES = ("cropped_image", "boundary_mask", "is_out_of_bounds")
     FUNCTION = "process"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def process(self, image, mask, top_extend, bottom_extend, left_extend, right_extend):
         # 确保输入为单张图像且尺寸匹配
@@ -94,5 +94,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHaiMaskCrop": "孤海遮罩裁剪"
+    "GuHaiMaskCrop": "Goohai Mask Crop"
 }

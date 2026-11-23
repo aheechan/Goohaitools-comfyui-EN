@@ -18,7 +18,7 @@ class GuHaiPNGAutoMask:
     
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "process_images"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     TITLE = "孤海定制-PNG自动套图"
     
     def process_images(self, template_image, portrait_image):
@@ -174,5 +174,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHaiPNGAutoMask": "孤海定制-PNG自动套图"
+    "GuHaiPNGAutoMask": "Goohai Custom PNG Auto Template"
 }

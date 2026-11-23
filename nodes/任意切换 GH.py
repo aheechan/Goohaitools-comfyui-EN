@@ -21,7 +21,7 @@ class GoohaiAnySwitch:
     RETURN_TYPES = (ANY,)
     RETURN_NAMES = ("any",)
     FUNCTION = "switch"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     @classmethod
     def VALIDATE_INPUTS(cls, input_types): return True
     @staticmethod
@@ -62,7 +62,7 @@ class GoohaiAnySwitch:
         raise RuntimeError("任意切换 GH：所有输入均为空，无法输出。")
 
 NODE_CLASS_MAPPINGS = {"GoohaiAnySwitch": GoohaiAnySwitch}
-NODE_DISPLAY_NAME_MAPPINGS = {"GoohaiAnySwitch": "任意切换 GH"}
+NODE_DISPLAY_NAME_MAPPINGS = {"GoohaiAnySwitch": "Any Switch GH"}
 
 
 

@@ -17,8 +17,8 @@ class MaskAlign:
     
     RETURN_TYPES = ("MASK",)
     FUNCTION = "align_mask"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "孤海-遮罩对齐"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Aligns a mask to a target position."
 
     def align_mask(self, 遮罩, 水平对齐, 垂直对齐, 合并BBOX, 参考遮罩=None):
         # 处理单张遮罩
@@ -155,5 +155,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海-遮罩对齐": "孤海-遮罩对齐v2"
+    "孤海-遮罩对齐": "Goohai Mask Align v2"
 }

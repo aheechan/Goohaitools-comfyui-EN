@@ -197,7 +197,7 @@ class TextEditorNode extends TextEditorBaseNode {
         this.flags = this.flags || {};
         this.flags.allow_interaction = !this.flags.pinned;
         this.properties = {
-            text: "双击编辑文本，右键滑动调整大小...",
+            text: "Double-click to edit text; right-click and drag to resize...",
             fontSize: 24,
             fontColor: "#C8C8C8",
             backgroundColor: "#1B4669",
@@ -409,7 +409,7 @@ class TextEditorNode extends TextEditorBaseNode {
         const alignRow = document.createElement("div");
         Object.assign(alignRow.style, { display: "flex", alignItems: "center", gap: "8px" });
         const alignLabel = document.createElement("span");
-        alignLabel.textContent = "对齐:";
+        alignLabel.textContent = "Align:";
         alignLabel.style.minWidth = "32px";
         alignLabel.style.fontSize = "13px";
         alignRow.appendChild(alignLabel);
@@ -461,7 +461,7 @@ class TextEditorNode extends TextEditorBaseNode {
         strokeCtrl.appendChild(this.strokeCheckbox);
 
         const strokeLabel = document.createElement("span");
-        strokeLabel.textContent = "：描边";
+        strokeLabel.textContent = ": Outline";
         Object.assign(strokeLabel.style, { fontSize: "13px", userSelect: "none", cursor: "pointer" });
         strokeLabel.addEventListener("click", () => {
             this.strokeCheckbox.checked = !this.strokeCheckbox.checked;
@@ -477,7 +477,7 @@ class TextEditorNode extends TextEditorBaseNode {
         Object.assign(textRow.style, { display: "flex", alignItems: "center", gap: "8px" });
 
         const txtLbl = document.createElement("span");
-        txtLbl.textContent = "文本:";
+        txtLbl.textContent = "Text:";
         txtLbl.style.minWidth = "32px";
         txtLbl.style.fontSize = "13px";
         textRow.appendChild(txtLbl);
@@ -498,7 +498,7 @@ class TextEditorNode extends TextEditorBaseNode {
         textRow.appendChild(textSpacer);
 
         const sizeLbl = document.createElement("span");
-        sizeLbl.textContent = "大小:";
+        sizeLbl.textContent = "Size:";
         sizeLbl.style.fontSize = "13px";
         textRow.appendChild(sizeLbl);
 
@@ -529,7 +529,7 @@ class TextEditorNode extends TextEditorBaseNode {
         Object.assign(bgRow.style, { display: "flex", alignItems: "center", gap: "8px" });
 
         const bgLbl = document.createElement("span");
-        bgLbl.textContent = "背景:";
+        bgLbl.textContent = "Background:";
         bgLbl.style.minWidth = "32px";
         bgLbl.style.fontSize = "13px";
         bgRow.appendChild(bgLbl);
@@ -550,7 +550,7 @@ class TextEditorNode extends TextEditorBaseNode {
         bgRow.appendChild(bgSpacer);
 
         const alphaLbl = document.createElement("span");
-        alphaLbl.textContent = "透明:";
+        alphaLbl.textContent = "Opacity:";
         alphaLbl.style.fontSize = "13px";
         bgRow.appendChild(alphaLbl);
 
@@ -578,7 +578,7 @@ class TextEditorNode extends TextEditorBaseNode {
         const radiusRow = document.createElement("div");
         Object.assign(radiusRow.style, { display: "flex", alignItems: "center", gap: "8px" });
         const radiusLbl = document.createElement("span");
-        radiusLbl.textContent = "圆角:";
+        radiusLbl.textContent = "Corner Radius:";
         radiusLbl.style.minWidth = "32px";
         radiusLbl.style.fontSize = "13px";
         radiusRow.appendChild(radiusLbl);
@@ -605,7 +605,7 @@ class TextEditorNode extends TextEditorBaseNode {
         const lhRow = document.createElement("div");
         Object.assign(lhRow.style, { display: "flex", alignItems: "center", gap: "8px" });
         const lhLbl = document.createElement("span");
-        lhLbl.textContent = "行距:";
+        lhLbl.textContent = "Line Spacing:";
         lhLbl.style.minWidth = "32px";
         lhLbl.style.fontSize = "13px";
         lhRow.appendChild(lhLbl);
@@ -920,7 +920,7 @@ class TextEditorNode extends TextEditorBaseNode {
             }
             window.open(url, "_blank");
         } catch (err) {
-            console.error("打开链接失败:", err);
+            console.error("Failed to open link:", err);
         }
     }
 
@@ -938,11 +938,11 @@ class TextEditorNode extends TextEditorBaseNode {
 
     getExtraMenuOptions(node, options) {
         options.unshift({
-            content: "编辑文本",
+            content: "Edit Text",
             callback: () => this.createTextEditor()
         });
         options.push({
-            content: "固定节点",
+            content: "Pin Node",
             callback: () => {
                 this.flags.pinned = !this.flags.pinned;
                 this.flags.allow_interaction = !this.flags.pinned;
@@ -961,20 +961,20 @@ class TextEditorNode extends TextEditorBaseNode {
 }
 
 TextEditorNode.type = "孤海注释";
-TextEditorNode.title = "孤海注释";
+TextEditorNode.title = "Goohai Note";
 TextEditorNode.title_mode = LiteGraph.NO_TITLE;
 TextEditorNode.collapsable = false;
 
-TextEditorNode["@text"] = { type: "string", title: "文本内容", default: "双击编辑文本，右键滑动调整大小...", multiline: true };
-TextEditorNode["@fontSize"] = { type: "number", title: "字体大小", default: 24, min: 8, max: 200, step: 1, round: 1 };
-TextEditorNode["@fontColor"] = { type: "color", title: "字体颜色", default: "#C8C8C8" };
-TextEditorNode["@backgroundColor"] = { type: "color", title: "背景颜色", default: "#1B4669" };
-TextEditorNode["@backgroundAlpha"] = { type: "number", title: "背景透明度", default: 0.25, min: 0, max: 1, step: 0.05 };
-TextEditorNode["@borderRadius"] = { type: "number", title: "圆角", default: 20, min: 0, max: 300, step: 1 };
-TextEditorNode["@padding"] = { type: "number", title: "内边距", default: 12, min: 0, max: 50, step: 1 };
-TextEditorNode["@lineHeight"] = { type: "number", title: "行距", default: 1.4, min: 0.8, max: 3, step: 0.1 };
-TextEditorNode["@textAlign"] = { type: "combo", title: "对齐方式", values: ["left", "center", "right"], default: "center" };
-TextEditorNode["@stroke"] = { type: "boolean", title: "描边", default: true };
+TextEditorNode["@text"] = { type: "string", title: "Text Content", default: "Double-click to edit text; right-click and drag to resize...", multiline: true };
+TextEditorNode["@fontSize"] = { type: "number", title: "Font Size", default: 24, min: 8, max: 200, step: 1, round: 1 };
+TextEditorNode["@fontColor"] = { type: "color", title: "Font Color", default: "#C8C8C8" };
+TextEditorNode["@backgroundColor"] = { type: "color", title: "Background Color", default: "#1B4669" };
+TextEditorNode["@backgroundAlpha"] = { type: "number", title: "Background Opacity", default: 0.25, min: 0, max: 1, step: 0.05 };
+TextEditorNode["@borderRadius"] = { type: "number", title: "Corner Radius", default: 20, min: 0, max: 300, step: 1 };
+TextEditorNode["@padding"] = { type: "number", title: "Padding", default: 12, min: 0, max: 50, step: 1 };
+TextEditorNode["@lineHeight"] = { type: "number", title: "Line Spacing", default: 1.4, min: 0.8, max: 3, step: 0.1 };
+TextEditorNode["@textAlign"] = { type: "combo", title: "Text Align", values: ["left", "center", "right"], default: "center" };
+TextEditorNode["@stroke"] = { type: "boolean", title: "Outline", default: true };
 
 const _origDrawNode = LGraphCanvas.prototype.drawNode;
 LGraphCanvas.prototype.drawNode = function (node, ctx) {

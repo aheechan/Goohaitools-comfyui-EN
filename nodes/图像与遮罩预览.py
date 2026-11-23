@@ -32,8 +32,8 @@ class ImageMaskPreview_Guhai:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "preview"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "输入一张图像和遮罩批次，在图像上叠加每个遮罩区域的颜色和对应序号，可自定义叠加颜色和不透明度"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Takes an image and a batch of masks, then overlays each mask region with a color and its index; overlay color and opacity are configurable."
 
 
     @classmethod
@@ -292,5 +292,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ImageMaskPreview_Guhai": "图像与遮罩预览 孤海"
+    "ImageMaskPreview_Guhai": "Image & Mask Preview Goohai"
 }

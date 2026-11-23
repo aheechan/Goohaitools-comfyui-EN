@@ -19,7 +19,7 @@ class 孤海人脸自动矫正:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("矫正后的图像",)
     FUNCTION = "process_image"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 完全旋转(self, img, angle):
         """执行完整图像旋转（不裁剪不填充）"""
@@ -143,4 +143,4 @@ class 孤海人脸自动矫正:
         return (torch.stack(output_images), )
 
 NODE_CLASS_MAPPINGS = {"孤海-人脸自动矫正": 孤海人脸自动矫正}
-NODE_DISPLAY_NAME_MAPPINGS = {"孤海-人脸自动矫正": "👤 孤海-人脸自动矫正"}
+NODE_DISPLAY_NAME_MAPPINGS = {"孤海-人脸自动矫正": "👤 Goohai Auto Face Correction"}

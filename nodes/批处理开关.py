@@ -3,7 +3,7 @@ import comfy.utils
 
 class GuHaiParameterSummary:
     FUNCTION = "get_params"    
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     RETURN_TYPES = ("BOOLEAN", "BOOLEAN", "FLOAT", "FLOAT")
     RETURN_NAMES = ("布尔1", "布尔2", "浮点1", "浮点2")
     
@@ -34,5 +34,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GuHaiParameterSummary": "孤海批处理开关"
+    "GuHaiParameterSummary": "Goohai Batch Switch"
 }

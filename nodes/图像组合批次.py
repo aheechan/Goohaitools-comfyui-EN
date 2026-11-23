@@ -22,7 +22,7 @@ class 孤海图像组合批次:
     RETURN_TYPES = ("IMAGE", "BOOLEAN", "INT")
     RETURN_NAMES = ("批次图像", "布尔", "批次总数")
     FUNCTION = "combine_images"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def combine_images(self, 统一尺寸模式="裁剪", **kwargs):
         valid_images = []
@@ -108,5 +108,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海图像组合批次": "孤海-图像组合批次"
+    "孤海图像组合批次": "Goohai Image Batch Combine"
 }

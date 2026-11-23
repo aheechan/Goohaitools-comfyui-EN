@@ -45,7 +45,7 @@ function syncImageInputs(node) {
     }
 
     inputs.forEach(({ slot }, index) => {
-        slot.label = `图像 ${index + 1}`;
+        slot.label = `Image ${index + 1}`;
         slot.type = "IMAGE";
     });
     node.setDirtyCanvas?.(true, true);
@@ -53,7 +53,7 @@ function syncImageInputs(node) {
 
 function labelReferenceSize(node) {
     const slot = (node.inputs || []).find((input) => input?.name === "ref_image_size");
-    if (slot) slot.label = "参考图尺寸";
+    if (slot) slot.label = "Reference Image Size";
 }
 
 function scheduleSync(node) {

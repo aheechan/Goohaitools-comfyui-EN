@@ -60,7 +60,7 @@ class 孤海Seg次序过滤:
     RETURN_TYPES = ("SEGS", "MASK")
     RETURN_NAMES = ("Seg", "Mask")
     FUNCTION = "filter_segments"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def get_segment_area(self, seg) -> float:
         """计算分割区域的面积"""
@@ -461,5 +461,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海Seg次序过滤": "孤海-Seg次序过滤"
+    "孤海Seg次序过滤": "Goohai Seg Order Filter"
 }

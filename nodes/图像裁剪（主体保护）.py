@@ -28,8 +28,8 @@ class GohaiImageCropWithMaskProtection:
     RETURN_TYPES = ("IMAGE", "MASK", "BOOLEAN")
     RETURN_NAMES = ("图像", "扩展遮罩", "是否扩展")
     FUNCTION = "crop_with_mask_protection"
-    CATEGORY = "孤海工具箱"
-    DESCRIPTION = "通过保护遮罩裁剪图像，保护遮罩区域完整保留"
+    CATEGORY = "Goohai Tools"
+    DESCRIPTION = "Crops the image while keeping the area covered by the protection mask fully intact."
 
     def crop_with_mask_protection(self, 图像, 宽度, 高度, 填充模式, 保护遮罩=None, 保护扩展系数=1.0, 整除数=0):
         # 处理整除数
@@ -618,5 +618,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GohaiImageCropWithMaskProtection": "孤海-图像裁剪（主体保护）"
+    "GohaiImageCropWithMaskProtection": "Goohai Image Crop (Subject Protection)"
 }

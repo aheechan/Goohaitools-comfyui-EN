@@ -74,7 +74,7 @@ class 孤海外补画板按目标宽高:
     RETURN_TYPES = ("IMAGE", "MASK", "BOOLEAN")
     RETURN_NAMES = ("图像", "遮罩", "外补是否存在")
     FUNCTION = "处理"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def 处理(self, 图像, 目标宽度, 目标高度, 左扩比例, 上扩比例, 羽化, 整除数, 遮罩=None, 外补颜色="#808080"):
         # 获取输入图像尺寸
@@ -246,7 +246,7 @@ class 孤海外补画板按比例:
     RETURN_TYPES = ("IMAGE", "MASK", "BOOLEAN")
     RETURN_NAMES = ("图像", "遮罩", "外补是否存在")
     FUNCTION = "处理"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def 处理(self, 图像, 比例宽, 比例高, 左扩比例, 上扩比例, 羽化, 整除数, 遮罩=None, 外补颜色="#808080"):
         # 获取输入图像尺寸
@@ -415,7 +415,7 @@ class 孤海外补画板按方向:
     RETURN_TYPES = ("IMAGE", "MASK", "BOOLEAN")
     RETURN_NAMES = ("图像", "遮罩", "外补是否存在")
     FUNCTION = "处理"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def 处理(self, 图像, 单位, 左, 右, 上, 下, 羽化, 整除数, 遮罩=None, 外补颜色="#808080"):
         # 获取输入图像尺寸
@@ -618,7 +618,7 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海外补画板按目标宽高": "孤海-外补画板（按目标宽高）",
-    "孤海外补画板按比例": "孤海-外补画板（按比例）",
-    "孤海外补画板按方向": "孤海-外补画板（按方向）"
+    "孤海外补画板按目标宽高": "Goohai Outpaint Canvas (Target Size)",
+    "孤海外补画板按比例": "Goohai Outpaint Canvas (Ratio)",
+    "孤海外补画板按方向": "Goohai Outpaint Canvas (Direction)"
 }

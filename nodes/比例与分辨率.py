@@ -65,7 +65,7 @@ class GoohaiRatioAndResolution:
     RETURN_TYPES = ("STRING", "INT", "INT")
     RETURN_NAMES = ("比例", "宽度", "高度")
     FUNCTION = "calculate"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     @staticmethod
     def _image_size(图像):
@@ -207,5 +207,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GoohaiRatioAndResolution": "比例与分辨率",
+    "GoohaiRatioAndResolution": "Aspect Ratio & Resolution",
 }

@@ -15,7 +15,7 @@ class 孤海遮罩比例计算:
     RETURN_TYPES = ("INT", "FLOAT", "INT", "FLOAT")
     RETURN_NAMES = ("扩展整", "扩展浮", "模糊整", "模糊浮")
     FUNCTION = "计算"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 计算(self, mask, 扩展百分比, 模糊百分比):
         # 提取有效遮罩宽度（白色区域）
@@ -44,5 +44,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "孤海遮罩比例计算": "孤海遮罩比例计算"
+    "孤海遮罩比例计算": "Goohai Mask Ratio Calculate"
 }

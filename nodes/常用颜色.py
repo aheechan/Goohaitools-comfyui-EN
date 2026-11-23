@@ -66,7 +66,7 @@ class 常用颜色孤海:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("T",)
     FUNCTION = "获取颜色"
-    CATEGORY = "🔵孤海/常用工具"
+    CATEGORY = "🔵Goohai/Utilities"
     OUTPUT_NODE = False
 
     def 获取颜色(self, 选择颜色, 自定义颜色="#213D50"):
@@ -99,5 +99,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "常用颜色🔵孤海": "常用颜色🔵孤海",
+    "常用颜色🔵孤海": "Common Colors 🔵Goohai",
 }

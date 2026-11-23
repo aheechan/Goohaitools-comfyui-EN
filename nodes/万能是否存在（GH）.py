@@ -33,7 +33,7 @@ class GoohaiAnyExists:
     RETURN_TYPES = (ANY, "BOOLEAN")
     RETURN_NAMES = ("Any", "布尔")
     FUNCTION = "check"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     @classmethod
     def VALIDATE_INPUTS(cls, input_types):
@@ -173,7 +173,7 @@ class GoohaiRouteBlocker:
     RETURN_TYPES = (ANY,)
     RETURN_NAMES = ("any",)
     FUNCTION = "route"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     @classmethod
     def VALIDATE_INPUTS(cls, input_types):
@@ -197,6 +197,6 @@ NODE_CLASS_MAPPINGS = {
     "GoohaiRouteBlocker": GoohaiRouteBlocker,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "GoohaiAnyExists": "万能是否存在(GH)",
-    "GoohaiRouteBlocker": "路由阻断",
+    "GoohaiAnyExists": "Universal Any Exists (GH)",
+    "GoohaiRouteBlocker": "Route Blocker",
 }

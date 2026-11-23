@@ -25,7 +25,7 @@ class ColorConverterGuhai:
     RETURN_TYPES = ("STRING", "GHCOLOR")
     RETURN_NAMES = ("字符串", "颜色控件")
     FUNCTION = "convert_color"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     OUTPUT_NODE = False
 
     def normalize_symbols(self, text):
@@ -153,7 +153,7 @@ class 取色器_孤海:
     RETURN_TYPES = ("GHCOLOR", "STRING")
     RETURN_NAMES = ("颜色控件", "字符串")
     FUNCTION = "获取颜色"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def 十六进制转rgb(self, hex_color):
         """将十六进制颜色转换为RGB"""
@@ -244,7 +244,7 @@ class 孤海取色器:
     RETURN_TYPES = ("STRING", "STRING", "STRING")
     RETURN_NAMES = ("模式", "主色", "辅色")
     FUNCTION = "取色"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     
     def 取色(self, 模式, 主色, 辅色):
         主色 = 孤海取色器.标准化颜色(主色)
@@ -286,7 +286,7 @@ class 孤海自定义颜色:
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "生成颜色"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
 
     def 生成颜色(self, 宽度, 高度, 模式, 颜色1, 颜色2, 缩放, 颗粒):
         def hex_to_rgb(hex_color):
@@ -346,8 +346,8 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ColorConverterGuhai": "颜色转换 孤海",
-    "取色器_孤海": "孤海🎨 取色器",
-    "孤海-取色器": "孤海 取色器（双）",
-    "孤海-自定义颜色": "孤海-自定义颜色"
+    "ColorConverterGuhai": "Color Converter Goohai",
+    "取色器_孤海": "Goohai 🎨 Color Picker",
+    "孤海-取色器": "Goohai Color Picker (Dual)",
+    "孤海-自定义颜色": "Goohai Custom Color"
 }

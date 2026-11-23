@@ -7,7 +7,7 @@ class IgnoreGroupsGuHai:
 
     RETURN_TYPES = ()
     FUNCTION = "execute"
-    CATEGORY = "孤海工具箱"
+    CATEGORY = "Goohai Tools"
     OUTPUT_NODE = True
 
     def execute(self):
@@ -19,5 +19,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "忽略多组孤海": "忽略多组 孤海",
+    "忽略多组孤海": "Ignore Extra Groups Goohai",
 }

@@ -299,7 +299,7 @@ function canvasToObjectUrl(canvas, type = "image/jpeg", quality = 0.88) {
 }
 
 async function inflateBytes(bytes) {
-    if (typeof DecompressionStream !== "function") throw new Error("当前浏览器不支持颜色层解码");
+    if (typeof DecompressionStream !== "function") throw new Error("This browser does not support color-layer decoding");
     const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate"));
     return new Uint8Array(await new Response(stream).arrayBuffer());
 }
@@ -427,7 +427,7 @@ function getEditorSources(value) {
 
 async function uploadCanvas(canvas, name, subfolder = "clipspace") {
     const blob = await canvasToBlob(canvas);
-    if (!blob) throw new Error("\u65e0\u6cd5\u751f\u6210 PNG \u6570\u636e");
+    if (!blob) throw new Error("Cannot generate PNG data");
     const file = new File([blob], name, { type: "image/png" });
     const body = new FormData();
     body.append("image", file);
@@ -435,7 +435,7 @@ async function uploadCanvas(canvas, name, subfolder = "clipspace") {
     body.append("subfolder", subfolder);
     body.append("overwrite", "true");
     const res = await api.fetchApi("/upload/image", { method: "POST", body });
-    if (!res.ok) throw new Error(`\u4e0a\u4f20\u5931\u8d25: HTTP ${res.status}`);
+    if (!res.ok) throw new Error(`Upload failed: HTTP ${res.status}`);
     return await res.json();
 }
 
@@ -447,7 +447,7 @@ async function uploadBlob(blob, name, subfolder = "clipspace") {
     body.append("subfolder", subfolder);
     body.append("overwrite", "true");
     const res = await api.fetchApi("/upload/image", { method: "POST", body });
-    if (!res.ok) throw new Error(`\u4e0a\u4f20\u5931\u8d25: HTTP ${res.status}`);
+    if (!res.ok) throw new Error(`Upload failed: HTTP ${res.status}`);
     return await res.json();
 }
 
@@ -670,60 +670,60 @@ class GoohaiMaskEditor {
             <div class="guhai-mask-toolbar">
                 <div class="guhai-mask-tools-left">
                     <div class="guhai-mask-segment">
-                        <button class="guhai-mask-btn active" data-tool="brush" title="B">\u753b\u7b14</button>
-                        <button class="guhai-mask-btn" data-tool="eraser" title="E">\u6a61\u76ae\u64e6</button>
-                        <button class="guhai-mask-btn" data-tool="marquee" title="M">\u9009\u6846</button>
+                        <button class="guhai-mask-btn active" data-tool="brush" title="B">Brush</button>
+                        <button class="guhai-mask-btn" data-tool="eraser" title="E">Eraser</button>
+                        <button class="guhai-mask-btn" data-tool="marquee" title="M">Marquee</button>
                     </div>
-                    <button class="guhai-mask-swatch active" data-color="green" title="\u7eff\u8272"></button>
-                    <button class="guhai-mask-swatch" data-color="white" title="\u767d\u8272"></button>
-                    <button class="guhai-mask-swatch" data-color="black" title="\u9ed1\u8272"></button>
+                    <button class="guhai-mask-swatch active" data-color="green" title="Green"></button>
+                    <button class="guhai-mask-swatch" data-color="white" title="White"></button>
+                    <button class="guhai-mask-swatch" data-color="black" title="Black"></button>
                      <span class="guhai-mask-size">30px</span>
                 </div>
-                <div class="guhai-mask-brush-hint">\u9f20\u6807\u53f3\u952e\u5de6\u53f3\u62d6\u52a8\u8c03\u6574\u753b\u7b14\u5927\u5c0f</div>
+                <div class="guhai-mask-brush-hint">Right-drag to adjust brush size</div>
                 <div class="guhai-mask-tools-right">
                     <button class="guhai-mask-icon-btn" data-act="undo" title="Ctrl+Z">\u21b6</button>
                     <button class="guhai-mask-icon-btn" data-act="redo" title="Ctrl+Shift+Z">\u21b7</button>
-                    <button class="guhai-mask-action" data-act="invert" title="Ctrl+I">\u53cd\u8f6c</button>
-                    <button class="guhai-mask-action" data-act="clear" title="X">\u6e05\u7a7a</button>
-                    <button class="guhai-mask-action" data-act="cancel" title="Esc">\u53d6\u6d88</button>
-                    <button class="guhai-mask-primary" data-act="save" title="Enter">\u4fdd\u5b58\u906e\u7f69</button>
+                    <button class="guhai-mask-action" data-act="invert" title="Ctrl+I">Invert</button>
+                    <button class="guhai-mask-action" data-act="clear" title="X">Clear</button>
+                    <button class="guhai-mask-action" data-act="cancel" title="Esc">Cancel</button>
+                    <button class="guhai-mask-primary" data-act="save" title="Enter">Save Mask</button>
                 </div>
             </div>
             <div class="guhai-mask-stage">
                 <div class="guhai-mask-output-panel">
                     <div class="guhai-mask-output-row">
                         <div class="guhai-mask-output-segment">
-                            <button class="guhai-mask-output-btn" data-output-mode="original">仅遮罩</button>
-                            <button class="guhai-mask-output-btn" data-output-mode="color">颜色叠加</button>
+                            <button class="guhai-mask-output-btn" data-output-mode="original">Mask Only</button>
+                            <button class="guhai-mask-output-btn" data-output-mode="color">Color Overlay</button>
                         </div>
                     </div>
                     <div class="guhai-mask-output-row guhai-mask-output-color-row">
                         <div class="guhai-mask-output-swatches">
-                            <button class="guhai-mask-output-swatch" data-output-color="white" title="白"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="red" title="红"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="orange" title="橙"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="yellow" title="黄"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="green" title="绿"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="cyan" title="青"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="blue" title="蓝"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="purple" title="紫"></button>
-                            <button class="guhai-mask-output-swatch" data-output-color="gray" title="128 中性灰"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="white" title="White"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="red" title="Red"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="orange" title="Orange"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="yellow" title="Yellow"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="green" title="Green"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="cyan" title="Cyan"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="blue" title="Blue"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="purple" title="Purple"></button>
+                            <button class="guhai-mask-output-swatch" data-output-color="gray" title="128 Neutral Gray"></button>
                         </div>
                     </div>
                     <div class="guhai-mask-output-row guhai-mask-output-opacity-row">
                         <div class="guhai-mask-output-opacity-head">
-                            <span class="guhai-mask-output-label">透明度</span>
+                            <span class="guhai-mask-output-label">Opacity</span>
                             <span class="guhai-mask-output-value" data-output-opacity-value></span>
                         </div>
                         <input class="guhai-mask-output-range" data-output-opacity type="range" min="0" max="100" step="5" />
                     </div>
                     <label class="guhai-mask-output-check">
-                        <span>自动填充漏洞</span>
+                        <span>Auto-fill Holes</span>
                         <input data-output-fill type="checkbox" />
                         <span class="guhai-mask-output-toggle" aria-hidden="true"></span>
                     </label>
                 </div>
-                <div class="guhai-mask-loading">\u52a0\u8f7d\u4e2d...</div>
+                <div class="guhai-mask-loading">Loading...</div>
                 <div class="guhai-mask-frame">
                     <img draggable="false" />
                     <canvas class="guhai-mask-paint"></canvas>
@@ -876,7 +876,7 @@ class GoohaiMaskEditor {
             }
             this.maskModePaint = this.cloneCanvas(this.rawPaint);
             this.refreshMaskDisplay();
-            this.dims.textContent = `${editW} \u00d7 ${editH}${this.natural.sf < 1 ? `  (\u539f\u56fe ${this.natural.w} \u00d7 ${this.natural.h})` : ""}`;
+            this.dims.textContent = `${editW} \u00d7 ${editH}${this.natural.sf < 1 ? `  (source ${this.natural.w} \u00d7 ${this.natural.h})` : ""}`;
             this.layoutCropViewport();
             this.frame.style.display = "inline-block";
             this.loading.style.display = "none";
@@ -885,7 +885,7 @@ class GoohaiMaskEditor {
             this.updateToolbar();
         } catch (err) {
             this.loading.className = "guhai-mask-error";
-            this.loading.textContent = `\u56fe\u7247\u52a0\u8f7d\u5931\u8d25: ${err?.message || err}`;
+            this.loading.textContent = `Image load failed: ${err?.message || err}`;
         }
     }
 
@@ -1367,8 +1367,8 @@ class GoohaiMaskEditor {
         const marquee = this.tool === "marquee";
         this.sizeText.style.visibility = marquee ? "hidden" : "";
         this.hint.textContent = marquee
-            ? "Shift=1:1/\u52a0\u9009\u533a \u00b7 Alt=\u51cf\u9009\u533a \u00b7 \u6846\u5185\u62d6\u52a8\u79fb\u52a8 \u00b7 \u5916\u90e8\u5355\u51fb\u53d6\u6d88"
-            : "\u9f20\u6807\u53f3\u952e\u5de6\u53f3\u62d6\u52a8\u8c03\u6574\u753b\u7b14\u5927\u5c0f";
+            ? "Shift=1:1/Add \u00b7 Alt=Subtract \u00b7 Drag inside to move \u00b7 Click outside to cancel"
+            : "Right-drag to adjust brush size";
         this.updateCursor();
     }
 
@@ -1742,7 +1742,7 @@ class GoohaiMaskEditor {
             menu.appendChild(button);
         }
         const del = document.createElement("button");
-        del.textContent = "×"; del.title = "删除连续区域";
+        del.textContent = "×"; del.title = "Delete Connected Area";
         del.addEventListener("click", () => { this.modifyColorComponent(rgb, null, point, sourceName); this.closeColorContextMenu(); });
         menu.appendChild(del);
         document.body.appendChild(menu);
@@ -2374,7 +2374,7 @@ class GoohaiMaskEditor {
             this.onSave(task, previewTask);
             this.close();
         } catch (err) {
-            alert(`\u4fdd\u5b58\u906e\u7f69\u5931\u8d25: ${err?.message || err}`);
+            alert(`Failed to save mask: ${err?.message || err}`);
         }
     }
 
@@ -2634,9 +2634,9 @@ function drawNodeMaskButtons(ctx, node, width, cy, hover) {
     const transparentOn = !!transparentWidget?.value;
     const hasMask = nodeHasMask(node);
     const fillColor = getNodeButtonFill(node);
-    drawToolbarIcon(ctx, xs[0], cy, "\u4e0a\u4f20", hover === "upload", false, fillColor);
+    drawToolbarIcon(ctx, xs[0], cy, "Upload", hover === "upload", false, fillColor);
     drawToolbarIcon(ctx, xs[1], cy, transparentOn ? "RGBA" : "RGB", hover === "transparent", transparentOn, fillColor);
-    drawToolbarIcon(ctx, xs[2], cy, "\u906e\u7f69", hover === "mask", hasMask, fillColor);
+    drawToolbarIcon(ctx, xs[2], cy, "Mask", hover === "mask", hasMask, fillColor);
 }
 
 function showNodeTooltip(text, event) {
@@ -2688,9 +2688,9 @@ function ensureNodeToolbar(node, nodeRoot = null) {
         toolbar = document.createElement("div");
         toolbar.className = "guhai-nodes2-load-toolbar";
         toolbar.innerHTML = `
-            <button type="button" data-action="upload" title="上传图像">上传</button>
-            <button type="button" data-action="transparent" title="保留透明通道" aria-label="RGBA"></button>
-            <button type="button" data-action="mask" title="遮罩编辑">遮罩</button>
+            <button type="button" data-action="upload" title="Upload Image">Upload</button>
+            <button type="button" data-action="transparent" title="Preserve Alpha Channel" aria-label="RGBA"></button>
+            <button type="button" data-action="mask" title="Edit Mask">Mask</button>
         `;
         toolbar.addEventListener("pointerdown", (event) => {
             event.stopPropagation();
@@ -3007,7 +3007,7 @@ function refreshNodes2MaskPreviews(root = document) {
             if (!color) {
                 color = document.createElement("img");
                 color.dataset.guhaiNodes2Color = "true";
-                color.alt = "遮罩颜色叠加预览";
+                color.alt = "Mask color overlay preview";
                 color.draggable = false;
                 color.className = img.className;
                 color.style.zIndex = "2";
@@ -3040,7 +3040,7 @@ function refreshNodes2MaskPreviews(root = document) {
         if (!original) {
             original = document.createElement("img");
             original.dataset.guhaiNodes2Original = "true";
-            original.alt = "遮罩原图预览";
+            original.alt = "Mask source preview";
             original.draggable = false;
             original.className = img.className;
             parent.insertBefore(original, img);
@@ -3051,7 +3051,7 @@ function refreshNodes2MaskPreviews(root = document) {
         if (!green) {
             green = document.createElement("img");
             green.dataset.guhaiNodes2Green = "true";
-            green.alt = "遮罩绿色叠加";
+            green.alt = "Mask green overlay";
             green.draggable = false;
             green.className = img.className;
             green.style.filter = "brightness(0) saturate(100%) invert(72%) sepia(64%) saturate(550%) hue-rotate(93deg) brightness(92%) contrast(91%)";
@@ -3065,7 +3065,7 @@ function refreshNodes2MaskPreviews(root = document) {
         if (!masked) {
             masked = document.createElement("img");
             masked.dataset.guhaiNodes2Masked = "true";
-            masked.alt = "遮罩透明预览";
+            masked.alt = "Mask transparency preview";
             masked.draggable = false;
             masked.className = img.className;
             masked.style.zIndex = "2";
@@ -3319,7 +3319,7 @@ async function uploadSelectedImageForNode(node, file) {
         body.append("type", "input");
         body.append("overwrite", "false");
         const res = await api.fetchApi("/upload/image", { method: "POST", body });
-        if (!res.ok) throw new Error(`\u4e0a\u4f20\u5931\u8d25: HTTP ${res.status}`);
+        if (!res.ok) throw new Error(`Upload failed: HTTP ${res.status}`);
         const item = await res.json();
         const value = `${item.subfolder ? `${item.subfolder}/` : ""}${item.name || item.filename} [input]`;
         const imageWidget = findImageWidget(node);
@@ -3350,7 +3350,7 @@ function installLoadImagePaste(node) {
             // filename before the server resolves its final, unique filename.
             await uploadSelectedImageForNode(node, file);
         } catch (err) {
-            alert(`\u4e0a\u4f20\u56fe\u50cf\u5931\u8d25: ${err?.message || err}`);
+            alert(`Image upload failed: ${err?.message || err}`);
         }
     };
 }
@@ -3396,7 +3396,7 @@ function installCanvasImageDropFallback() {
         event.stopPropagation();
         event.stopImmediatePropagation?.();
         uploadSelectedImageForNode(node, file).catch((err) => {
-            alert(`\u4e0a\u4f20\u56fe\u50cf\u5931\u8d25: ${err?.message || err}`);
+            alert(`Image upload failed: ${err?.message || err}`);
         });
     }, { capture: true, passive: false });
 
@@ -3416,7 +3416,7 @@ function openUploadForNode(node) {
         try {
             await uploadSelectedImageForNode(node, file);
         } catch (err) {
-            alert(`\u4e0a\u4f20\u56fe\u50cf\u5931\u8d25: ${err?.message || err}`);
+            alert(`Image upload failed: ${err?.message || err}`);
         }
     }, { once: true });
     input.click();
@@ -3450,9 +3450,9 @@ function installFloatingButtons(node) {
             node._guhaiMaskButtons = this._buttons;
             node._guhaiControlsWidgetDrawAt = performance.now();
             const fillColor = getNodeButtonFill(node);
-            drawToolbarIcon(ctx, xs[0], cy, "\u4e0a\u4f20", this._hover === "upload", false, fillColor);
+            drawToolbarIcon(ctx, xs[0], cy, "Upload", this._hover === "upload", false, fillColor);
             drawToolbarIcon(ctx, xs[1], cy, transparentOn ? "RGBA" : "RGB", this._hover === "transparent", transparentOn, fillColor);
-            drawToolbarIcon(ctx, xs[2], cy, "\u906e\u7f69", this._hover === "mask", nodeHasMask(node), fillColor);
+            drawToolbarIcon(ctx, xs[2], cy, "Mask", this._hover === "mask", nodeHasMask(node), fillColor);
         },
         mouse(event, pos, node) {
             let hit = null;
@@ -3461,7 +3461,7 @@ function installFloatingButtons(node) {
             }
             // Do not consume right-clicks; LiteGraph must open the node menu.
             if (event?.button === 2 || event?.which === 3) return false;
-            const tooltip = hit ? (hit === "upload" ? "\u4e0a\u4f20\u56fe\u50cf" : hit === "transparent" ? "\u4fdd\u7559\u900f\u660e\u901a\u9053" : "\u906e\u7f69\u7f16\u8f91") : "";
+            const tooltip = hit ? (hit === "upload" ? "Upload Image" : hit === "transparent" ? "Preserve Alpha Channel" : "Edit Mask") : "";
             showNodeTooltip(tooltip, event);
             if (event.type === "pointermove" || event.type === "mousemove") {
                 if (hit !== this._hover) {
@@ -3520,7 +3520,7 @@ function installFloatingButtons(node) {
             if (controls) controls._hover = hit;
             this.setDirtyCanvas(true, true);
         }
-        const tooltip = hit ? (hit === "upload" ? "\u4e0a\u4f20\u56fe\u50cf" : hit === "transparent" ? "\u4fdd\u7559\u900f\u660e\u901a\u9053" : "\u906e\u7f69\u7f16\u8f91") : "";
+        const tooltip = hit ? (hit === "upload" ? "Upload Image" : hit === "transparent" ? "Preserve Alpha Channel" : "Edit Mask") : "";
         showNodeTooltip(tooltip, event);
         if (origMouseMove) return origMouseMove.apply(this, arguments);
     };
@@ -3607,7 +3607,7 @@ function roundRect(ctx, x, y, w, h, r) {
 function openEditorForNode(node) {
     const imageWidget = findImageWidget(node);
     if (!imageWidget?.value) {
-        alert("\u8bf7\u5148\u5728\u52a0\u8f7d\u56fe\u50cf\u8282\u70b9\u4e2d\u9009\u62e9\u6216\u4e0a\u4f20\u56fe\u50cf\u3002");
+        alert("Select or upload an image in the Load Image node first.");
         return;
     }
     const sources = getEditorSources(imageWidget.value);
@@ -3648,7 +3648,7 @@ function openEditorForNode(node) {
             const pending = Promise.resolve(saveTask).then(({ value, previewDataUrl, previewTask, outputState }) => {
                 targetNode = currentNode();
                 const targetWidget = findImageWidget(targetNode);
-                if (!targetWidget) throw new Error("加载图像节点已不存在");
+                if (!targetWidget) throw new Error("Load Image node no longer exists");
                 targetNode.properties ||= {};
                 if (outputState) targetNode.properties.guhaiMaskOutputState = outputState;
                 rebindCrop(targetNode, value);
@@ -3665,7 +3665,7 @@ function openEditorForNode(node) {
                 setTimeout(() => refreshNodes2MaskPreviews(), 100);
                 setTimeout(() => refreshNodes2MaskPreviews(), 1200);
             }).catch((err) => {
-                alert(`\u4fdd\u5b58\u906e\u7f69\u5931\u8d25: ${err?.message || err}`);
+                alert(`Failed to save mask: ${err?.message || err}`);
             }).finally(() => {
                 targetNode = currentNode();
                 targetNode._guhaiMaskEditorSavePending = false;
@@ -3739,7 +3739,7 @@ function installMaskEditorMenu(nodeType) {
     nodeType.prototype.getExtraMenuOptions = function (canvas, options) {
         origMenu?.apply(this, arguments);
         options.splice(2, 0, {
-            content: "\uD83D\uDD8C \u906e\u7f69\u7f16\u8f91\u5668",
+            content: "\uD83D\uDD8C Mask Editor",
             className: "guhai-mask-menu-entry",
             callback: () => openEditorForNode(this),
         });
