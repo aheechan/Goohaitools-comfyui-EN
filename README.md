@@ -33,7 +33,13 @@ Node titles and menu categories are **English in the code itself**, so they show
 
 Input labels, tooltips and node descriptions are provided through [`locales/en/nodeDefs.json`](locales/en/nodeDefs.json) using ComfyUI's built-in custom-node translation system. Set **Settings → Language → English** in ComfyUI to see them; with another interface language you will still get the original Chinese labels.
 
-Dropdown option values are intentionally left in the original language for now, so workflows exported from this fork stay compatible with the upstream pack.
+Dropdown option values are English too. `i18n_options.py` wraps each node's `INPUT_TYPES()` so the combo lists are shown in English, and maps the chosen English value back to the original internal value right before the node runs. [`locales/en/option_values.json`](locales/en/option_values.json) holds the value table.
+
+Compatibility notes:
+
+- Workflows saved by the upstream (Chinese) pack still load: validation accepts both the English labels and the original Chinese values.
+- Workflows saved by this fork store the English option values, so passing them back to the upstream pack is not supported without re-selecting the options.
+- Node class names, input keys and the workflow format are unchanged.
 
 ## 📦 Node overview
 

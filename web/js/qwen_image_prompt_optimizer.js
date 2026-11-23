@@ -209,7 +209,7 @@ function prepareRuntimeSeeds() {
     for (const node of nodes) {
         if (node?.comfyClass !== NODE_NAME && node?.type !== NODE_NAME) continue;
         const mode = widgetValue(node, SEED_MODE_WIDGET_NAMES);
-        if (mode === "随机") updateSeedWidget(node, nextRandomSeed());
+        if (mode === "Random") updateSeedWidget(node, nextRandomSeed());
     }
 }
 
@@ -223,9 +223,9 @@ function prepareRuntimeSeedModes() {
         const selectedMode = widget.value;
         const lastExecutedMode = node._goohaiLastExecutedSeedMode
             || node.properties?.[LAST_SEED_MODE_PROPERTY];
-        const queuedMode = selectedMode === "固定"
-            && lastExecutedMode === "随机"
-            ? "随机"
+        const queuedMode = selectedMode === "Fixed"
+            && lastExecutedMode === "Random"
+            ? "Random"
             : selectedMode;
         node._goohaiQueuedSeedMode = selectedMode;
         if (queuedMode !== selectedMode) {

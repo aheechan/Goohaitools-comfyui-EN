@@ -46,6 +46,18 @@ for file_path in nodes_dir.glob("*.py"):
 
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS', 'WEB_DIRECTORY']
 
+# English dropdown values: show English in the UI, map back to the original
+# value right before the node function runs.
+try:
+    _i18n_spec = importlib.util.spec_from_file_location(
+        "goohaitools_i18n_options", current_dir / "i18n_options.py"
+    )
+    _i18n_module = importlib.util.module_from_spec(_i18n_spec)
+    _i18n_spec.loader.exec_module(_i18n_module)
+    _i18n_module.apply_english_options(NODE_CLASS_MAPPINGS)
+except Exception as _i18n_error:  # pragma: no cover
+    logging.warning("[GoohaiTools] English option values disabled: %s", _i18n_error)
+
 # 打印加载信息
 logging.info(
     '\033[1m[GoohaiTools] %s nodes loaded | ColorWidget enabled\033[0m',

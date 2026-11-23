@@ -4,6 +4,7 @@ import { api } from "/scripts/api.js";
 const NODE_TYPE = "孤海外补画板可视化";
 const W = "gh_outpaint_visual";
 const RATIOS = ["自由比例", "原始比例", "1:1", "2:3", "3:2", "3:4", "4:3", "5:7", "9:16", "16:9", "21:9", "1:2", "2:1"];
+const RATIO_LABELS = { "自由比例": "Free Ratio", "原始比例": "Original Ratio" };
 const SIDES = { left: "左", right: "右", top: "上", bottom: "下" };
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const loaderSubscriptions = new WeakMap();
@@ -92,14 +93,14 @@ function loaderInfo(node) {
         const type = upstream.widgets?.find((item) => item.name === "image_type")?.value;
         const value = widget?.value;
         return { node: upstream, widget, key: `ghil|${type}|${value}`, url: null,
-            selection: type && type !== "无" && value ? new URLSearchParams({ type, image: value }) : null };
+            selection: type && type !== "None" && value ? new URLSearchParams({ type, image: value }) : null };
     }
     const isLoader = ["LoadImage", "LoadImageGoohai", "LoadImageOutput"].includes(upstream.type)
         || ["LoadImage", "LoadImageGoohai", "LoadImageOutput"].includes(upstream.comfyClass);
     if (!isLoader) return null;
     const widget = upstream.widgets?.find((item) => ["image", "图像"].includes(item.name));
     const value = widget?.value;
-    if (!value || value === "无") return { node: upstream, widget, key: "", url: null };
+    if (!value || value === "None") return { node: upstream, widget, key: "", url: null };
     let raw = String(value).replaceAll("\\", "/");
     const annotated = raw.match(/\[(input|output|temp)\]\s*$/);
     const type = annotated?.[1] || "input";
@@ -229,7 +230,7 @@ function createPreview(node) {
     const ratio = document.createElement("select");
     ratio.title = "Output image ratio";
     ratio.setAttribute("aria-label", "Output image ratio");
-    for (const label of RATIOS) { const option = document.createElement("option"); option.value = label; option.textContent = label; ratio.append(option); }
+    for (const label of RATIOS) { const option = document.createElement("option"); option.value = label; option.textContent = RATIO_LABELS[label] || label; ratio.append(option); }
     ratio.style.cssText = "max-width:100px;background:#30343c;color:#ddd;border:1px solid #59616d;border-radius:3px;padding:3px;";
     for (const button of [load, reset]) {
         button.style.cssText = "background:#30343c;color:#ddd;border:1px solid #59616d;border-radius:3px;padding:3px 8px;font:inherit;line-height:normal;box-sizing:border-box;cursor:pointer;";
@@ -309,7 +310,7 @@ function createPreview(node) {
     ratio.value = internalWidget("gh_visual_ratio")?.value || "自由比例";
     function signature() {
         return [state.image?.naturalWidth || 0, state.image?.naturalHeight || 0,
-            internalWidget("单位")?.value || "像素", ...Object.values(SIDES).map((name) => numberWidget(node, name)?.value || 0)];
+            internalWidget("单位")?.value || "Pixels", ...Object.values(SIDES).map((name) => numberWidget(node, name)?.value || 0)];
     }
     function exactPads() {
         try {
@@ -322,7 +323,7 @@ function createPreview(node) {
     }
 
     function current() {
-        const unit = node.widgets?.find((item) => item.name === "单位")?.value || "像素";
+        const unit = node.widgets?.find((item) => item.name === "单位")?.value || "Pixels";
         const iw = state.image?.naturalWidth || state.image?.width || 0;
         const ih = state.image?.naturalHeight || state.image?.height || 0;
         for (const [key, label] of Object.entries({ left: "左", right: "右", top: "上", bottom: "下" })) {
@@ -333,7 +334,7 @@ function createPreview(node) {
                 rawWidget.value = 0;
                 rawWidget.callback?.(0);
             }
-            state.values[key] = unit === "百分比"
+            state.values[key] = unit === "Percent"
                 ? Math.trunc((key === "left" || key === "right" ? iw : ih) * raw / 100)
                 : Math.trunc(raw);
             if (!Number.isFinite(state.values[key])) {
@@ -432,8 +433,8 @@ function createPreview(node) {
         enforce();
     });
     function setExtension(nodeName, pixels, base) {
-        const unit = node.widgets?.find((item) => item.name === "单位")?.value || "像素";
-        const value = unit === "百分比" ? Math.round(pixels * 100 / Math.max(1, base)) : pixels;
+        const unit = node.widgets?.find((item) => item.name === "单位")?.value || "Pixels";
+        const value = unit === "Percent" ? Math.round(pixels * 100 / Math.max(1, base)) : pixels;
         setNumber(node, nodeName, value);
     }
     function outpaintColor() {
@@ -545,7 +546,7 @@ function createPreview(node) {
             top: (sourceTop - bounds.top) / p.scale,
             bottom: (bounds.bottom - sourceTop) / p.scale - p.ih,
         };
-        const percent = internalWidget("单位")?.value === "百分比";
+        const percent = internalWidget("单位")?.value === "Percent";
         const cx = (bounds.left + bounds.right) / 2, cy = (bounds.top + bounds.bottom) / 2;
         ctx.save();
         ctx.font = "10px sans-serif";

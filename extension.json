@@ -34,6 +34,10 @@
       "dst": "custom_nodes/Goohaitools-comfyui/"
     },
     {
+      "src": "i18n_options.py",
+      "dst": "custom_nodes/Goohaitools-comfyui/"
+    },
+    {
       "src": "extension.json",
       "dst": "custom_nodes/Goohaitools-comfyui/"
     },

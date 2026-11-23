@@ -2417,7 +2417,7 @@ function addImageWidgetOption(widget, value) {
 
 function isEmptyImageValue(value) {
     const normalized = String(value ?? "").trim();
-    return !normalized || normalized === "无";
+    return !normalized || normalized === "None";
 }
 
 function keepEmptyLoadImageNodeInteractive(node) {
@@ -2475,7 +2475,7 @@ function restoreLoadImageState(node) {
     const imageWidget = findImageWidget(node);
     if (!imageWidget) return;
     const saved = node.properties?.guhaiImageValue;
-    if (saved && (!imageWidget.value || imageWidget.value === "无")) imageWidget.value = saved;
+    if (saved && (!imageWidget.value || imageWidget.value === "None")) imageWidget.value = saved;
     const transparentWidget = findTransparentWidget(node);
     if (transparentWidget) {
         const hasSavedMode = Object.prototype.hasOwnProperty.call(node.properties || {}, "guhaiPreserveAlpha");
@@ -3429,7 +3429,7 @@ function installFloatingButtons(node) {
     hideBulkyWidgets(node);
 
     // Keep a real node hit area even when the image widget has no preview.
-    // This also prevents an empty "无" selection from collapsing the node.
+    // This also prevents an empty "None" selection from collapsing the node.
     const ensureInteractiveSize = () => keepEmptyLoadImageNodeInteractive(node);
     ensureInteractiveSize();
 
